@@ -25,10 +25,6 @@ interface ContactSectionProps {
    */
   socialLinks?: Array<{ id: string; name: string; iconSrc: string; href: string }>;
   /**
-   * Placeholder image for the background.
-   */
-  backgroundImageSrc?: string;
-  /**
    * Callback function when the form is submitted.
    * @param data The form data.
    */
@@ -46,7 +42,6 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
   mainMessage = "Let's talk! 👋",
   contactEmail = "hello@pixelperfect.com",
   socialLinks = defaultSocialLinks,
-  backgroundImageSrc = "/c back.png",
   onSubmit,
 }) => {
   const [formData, setFormData] = useState({
@@ -93,11 +88,8 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
 
   return (
     <section id="contact" className="relative min-h-screen w-full overflow-hidden bg-background">
-      {/* Background Image and Animated Bubbles */}
-      <div
-        className="absolute inset-0 bg-cover bg-center transition-all duration-500 ease-in-out"
-        style={{ backgroundImage: `url(${backgroundImageSrc})` }}
-      >
+      {/* Animated Bubbles Background */}
+      <div className="absolute inset-0 transition-all duration-500 ease-in-out">
         {/* Animated Bubbles */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           {mounted && Array.from({ length: 15 }).map((_, i) => (

@@ -142,6 +142,7 @@ const PricingSwitch = ({
 
 export function PricingSection() {
   const [isYearly, setIsYearly] = useState(false);
+  const [selectedPlan, setSelectedPlan] = useState("Professional");
   const pricingRef = useRef<HTMLDivElement>(null);
 
   const revealVariants = {
@@ -165,8 +166,8 @@ export function PricingSection() {
     setIsYearly(Number.parseInt(value) === 1);
 
   return (
-    <div
-      className="px-4 pt-20 pb-16 min-h-screen mx-auto relative bg-neutral-100"
+    <section
+      className="w-full px-4 pt-20 pb-16 min-h-screen relative bg-white"
       id="pricing"
       ref={pricingRef}
     >
@@ -222,7 +223,7 @@ export function PricingSection() {
         <PricingSwitch onSwitch={togglePricingPeriod} />
       </TimelineContent>
 
-      <div className="grid md:grid-cols-3 max-w-7xl gap-4 py-6 mx-auto">
+      <div className="grid lg:grid-cols-3 md:grid-cols-2 max-w-7xl w-full gap-8 py-10 mx-auto px-4 sm:px-6 lg:px-8">
         {plans.map((plan, index) => (
           <TimelineContent
             key={plan.name}
@@ -232,10 +233,11 @@ export function PricingSection() {
             customVariants={revealVariants}
           >
             <Card
-              className={`relative border-neutral-200 ${
-                plan.popular
+              onClick={() => setSelectedPlan(plan.name)}
+              className={`relative border-neutral-200 cursor-pointer transition-all duration-300 ${
+                selectedPlan === plan.name
                   ? "ring-2 ring-blue-500 bg-blue-50"
-                  : "bg-white"
+                  : "bg-white hover:border-blue-300"
               }`}
             >
               <CardHeader className="text-left">
@@ -271,7 +273,7 @@ export function PricingSection() {
               <CardContent className="pt-0">
                 <button
                   className={`w-full mb-6 p-4 text-xl rounded-xl cursor-pointer transition-all duration-300 ${
-                    plan.popular
+                    selectedPlan === plan.name
                       ? "bg-gradient-to-t from-blue-600 to-blue-500 shadow-lg shadow-blue-500/30 border border-blue-400 text-white hover:shadow-blue-500/50"
                       : "bg-gradient-to-t from-neutral-900 to-neutral-600 shadow-lg shadow-neutral-900/20 border border-neutral-700 text-white hover:shadow-neutral-900/40"
                   }`}
@@ -313,6 +315,6 @@ export function PricingSection() {
           </TimelineContent>
         ))}
       </div>
-    </div>
+    </section>
   );
 }

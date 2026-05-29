@@ -11,21 +11,23 @@ export interface ClientProject {
 
 export const clients: ClientProject[] = [
   {
-    id: "stylevault",
-    title: "StyleVault — E-Commerce Platform",
+    id: "photo-studio",
+    title: "Lens & Light — Photography Studio",
     description:
-      "A stunning e-commerce platform with blazing fast performance. Sales increased by 40% within the first month of launch.",
-    websiteName: "StyleVault",
-    websiteUrl: "https://stylevault.com",
+      "A premium showcase for professional photography. Increased booking inquiries by 120% through a stunning visual portfolio.",
+    websiteName: "Lens & Light Studio",
+    websiteUrl: "https://photography-phi-three.vercel.app",
     websiteDescription:
-      "Premium fashion e-commerce platform built with Next.js and headless CMS for seamless shopping experience.",
-    image:
-      "https://images.unsplash.com/photo-1551250928-243dc937c49d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w2NDI3NzN8MHwxfGFsbHwxMjN8fHx8fHwyfHwxNzIzODA2OTM5fA&ixlib=rb-4.0.3&q=80&w=1080",
-    screenshots: Array.from({ length: 6 }).map((_, i) => ({
-      src: `https://picsum.photos/seed/sv-${i}/${i % 2 === 0 ? 1920 : 1080}/${i % 2 === 0 ? 1080 : 1920}`,
-      alt: `StyleVault screenshot ${i + 1}`,
-      ratio: i % 2 === 0 ? 16 / 9 : 9 / 16,
-    })),
+      "High-end photography portfolio with dynamic galleries, smooth cinematic transitions, and an integrated booking system.",
+    image: "/c1.png",
+    screenshots: [
+      { src: "/m (1).png", alt: "Studio homepage gallery", ratio: 16 / 9 },
+      { src: "/m (2).png", alt: "Portfolio showcase", ratio: 16 / 9 },
+      { src: "/m (3).png", alt: "Service details", ratio: 16 / 9 },
+      { src: "/m (4).png", alt: "Client testimonials", ratio: 16 / 9 },
+      { src: "/m (5).png", alt: "Booking calendar", ratio: 16 / 9 },
+      { src: "/m (6).png", alt: "Contact and location", ratio: 16 / 9 },
+    ],
   },
   {
     id: "technova",

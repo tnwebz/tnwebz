@@ -40,12 +40,7 @@ const CARD_SIZES = [
 const SUBTEXT =
   "We build premium digital experiences that help businesses grow. From stunning websites to powerful apps — your vision, our code.";
 
-const NAV_LINKS = [
-  { href: "#about", label: "About" },
-  { href: "#pricing", label: "Pricing" },
-  { href: "#portfolio", label: "Portfolio" },
-  { href: "#contact", label: "Contact" },
-];
+
 
 function useTypewriter(text: string, speed = 26) {
   const [displayed, setDisplayed] = useState("");
@@ -234,53 +229,11 @@ export function HeroSection() {
   }, []);
 
   return (
-    <section className="relative min-h-[100dvh] overflow-hidden bg-white">
-      <div className="relative z-10 flex min-h-[100dvh] flex-col px-4 py-5 sm:px-8 sm:py-6 lg:px-14">
-        {/* Header */}
-        <header className="space-y-3">
-          <div className="flex items-center justify-between gap-3">
-            <a
-              href="/"
-              className="text-lg sm:text-xl font-bold tracking-tight"
-            >
-              <span className="text-black">tn</span>
-              <span className="text-[#2019fe]">webz</span>
-            </a>
-            <a
-              href="#contact"
-              className="shrink-0 border border-black px-3 py-1.5 text-[9px] font-medium uppercase tracking-[0.14em] text-black transition-colors hover:bg-black hover:text-white sm:px-5 sm:py-2 sm:text-xs sm:tracking-[0.18em]"
-            >
-              Get in touch
-            </a>
-          </div>
-
-          {/* Mobile nav */}
-          <nav className="flex gap-4 overflow-x-auto pb-1 text-[10px] text-zinc-600 [-ms-overflow-style:none] [scrollbar-width:none] md:hidden [&::-webkit-scrollbar]:hidden">
-            {NAV_LINKS.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="shrink-0 whitespace-nowrap hover:text-black"
-              >
-                {link.label}
-              </a>
-            ))}
-          </nav>
-
-          {/* Desktop nav */}
-          <nav className="hidden items-center justify-center gap-8 text-xs text-zinc-600 md:flex">
-            {NAV_LINKS.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="transition-colors hover:text-black"
-              >
-                {link.label}
-              </a>
-            ))}
-          </nav>
-        </header>
-
+    <section 
+      className="relative min-h-[100dvh] overflow-hidden bg-white bg-cover bg-center bg-no-repeat"
+      style={{ backgroundImage: "url('/hero-back.png')" }}
+    >
+      <div className="relative z-10 flex min-h-[100dvh] flex-col px-4 pt-24 pb-5 sm:px-8 sm:pt-28 sm:pb-6 lg:px-14">
         {/* Main Content */}
         <div className="flex flex-1 flex-col gap-8 py-6 sm:gap-10 sm:py-8 lg:flex-row lg:items-center lg:justify-between lg:gap-6 lg:py-16">
           <div className="flex w-full flex-col justify-center lg:max-w-[48%]">
