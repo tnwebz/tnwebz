@@ -84,7 +84,7 @@ export function WorksSection() {
 
   return (
     <section id="portfolio" className="py-24 md:py-32 bg-[#f5f5f3]">
-      <div className="container mx-auto px-4">
+      <div className="w-full px-4 sm:px-8 lg:px-14">
         {/* Header */}
         <div className="mb-8 flex items-end justify-between md:mb-14 lg:mb-16">
           <div className="flex flex-col gap-4">
@@ -123,10 +123,11 @@ export function WorksSection() {
       </div>
 
       {/* Carousel */}
-      <div className="w-full">
+      <div className="w-full pl-4 sm:pl-8 lg:pl-14">
         <Carousel
           setApi={setCarouselApi}
           opts={{
+            align: "start",
             breakpoints: {
               "(max-width: 768px)": {
                 dragFree: true,
@@ -134,11 +135,11 @@ export function WorksSection() {
             },
           }}
         >
-          <CarouselContent className="ml-0 2xl:ml-[max(8rem,calc(50vw-700px))] 2xl:mr-[max(0rem,calc(50vw-700px))]">
+          <CarouselContent className="-ml-4 sm:-ml-6">
             {clients.map((client) => (
               <CarouselItem
                 key={client.id}
-                className="max-w-[320px] pl-[20px] lg:max-w-[360px]"
+                className="max-w-[320px] pl-4 sm:pl-6 lg:max-w-[360px]"
               >
                 <div className="group rounded-xl">
                   <div className="group relative h-full min-h-[27rem] max-w-full overflow-hidden rounded-xl md:aspect-[5/4] lg:aspect-[16/9]">

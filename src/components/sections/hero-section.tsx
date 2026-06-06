@@ -42,14 +42,17 @@ const fadeUp = {
   },
 };
 
-const headingReveal = {
-  hidden: { opacity: 0, y: 30, filter: "blur(8px)" },
-  visible: {
+const lineReveal = {
+  hidden: { y: "110%", opacity: 0 },
+  visible: (i: number) => ({
+    y: "0%",
     opacity: 1,
-    y: 0,
-    filter: "blur(0px)",
-    transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
-  },
+    transition: { 
+      duration: 1, 
+      ease: [0.16, 1, 0.3, 1],
+      delay: 0.2 + (i * 0.12)
+    },
+  }),
 };
 
 export function HeroSection() {
@@ -77,22 +80,21 @@ export function HeroSection() {
             animate="visible"
           >
             {/* Heading */}
-            <motion.h1
-              variants={headingReveal}
-              className="font-black uppercase leading-[0.92] tracking-tight text-zinc-950"
+            <h1
+              className="font-black uppercase leading-[0.92] tracking-tight text-zinc-950 flex flex-col"
               style={{
                 fontSize: "clamp(2.6rem, 7.5vw, 5.2rem)",
                 fontFamily: "'Inter', 'Arial Black', sans-serif",
               }}
             >
-              Build Your
-              <br />
-              Website
-              <br />
-              As You
-              <br />
-              Like
-            </motion.h1>
+              {["Build Your", "Website", "As You", "Like"].map((line, i) => (
+                <span key={i} className="block overflow-hidden pb-1">
+                  <motion.span custom={i} variants={lineReveal} className="block">
+                    {line}
+                  </motion.span>
+                </span>
+              ))}
+            </h1>
 
             {/* Description */}
             <motion.p
@@ -111,7 +113,7 @@ export function HeroSection() {
                 className="group inline-flex items-center gap-3 rounded-full bg-zinc-950 px-7 py-4 text-sm font-semibold uppercase tracking-widest text-white transition-all duration-300 hover:bg-zinc-800 hover:shadow-[0_10px_30px_rgba(0,0,0,0.15)] hover:-translate-y-0.5 sm:px-8 sm:py-4 sm:text-base"
               >
                 <span className="flex h-3 w-3 items-center justify-center rounded-full border-2 border-white/60 transition-colors group-hover:border-white" />
-                Register Now
+                Let&apos;s Talk
               </a>
             </motion.div>
 
@@ -145,21 +147,7 @@ export function HeroSection() {
       {/* ─── DESKTOP VIEW (New layout matching reference) ─── */}
       <div className="relative z-10 hidden lg:flex min-h-[100dvh] w-full flex-col px-12 py-12 xl:px-16 xl:py-16">
         
-        {/* Top Header Placeholder (from Image 1 wireframe) */}
-        <div className="w-full flex justify-between items-center text-sm font-semibold uppercase tracking-widest text-zinc-800">
-          <div className="flex gap-8">
-            <a href="#" className="hover:opacity-70 transition-opacity">Products</a>
-            <a href="#" className="hover:opacity-70 transition-opacity">Security</a>
-            <a href="#pricing" className="hover:opacity-70 transition-opacity">Pricing</a>
-            <a href="#about" className="hover:opacity-70 transition-opacity">About Us</a>
-          </div>
-          <div className="flex gap-6 items-center">
-            <a href="#" className="hover:opacity-70 transition-opacity">Log In</a>
-            <a href="#pricing" className="px-6 py-2 border border-zinc-900 rounded-full hover:bg-zinc-900 hover:text-white transition-colors">
-              Get in Touch
-            </a>
-          </div>
-        </div>
+
 
         {/* Main Content Area */}
         <div className="flex-1 relative w-full mt-16">
@@ -171,9 +159,8 @@ export function HeroSection() {
             initial="hidden"
             animate="visible"
           >
-            <motion.h1
-              variants={headingReveal}
-              className="font-serif text-zinc-900"
+            <h1
+              className="font-serif text-zinc-900 flex flex-col"
               style={{
                 fontSize: "clamp(6rem, 8.5vw, 10rem)",
                 lineHeight: "0.9",
@@ -181,10 +168,14 @@ export function HeroSection() {
                 fontWeight: 500,
               }}
             >
-              Build Your<br />
-              Website<br />
-              As You Like
-            </motion.h1>
+              {["Build Your", "Website", "As You Like"].map((line, i) => (
+                <span key={i} className="block overflow-hidden pb-2 pt-1">
+                  <motion.span custom={i} variants={lineReveal} className="block">
+                    {line}
+                  </motion.span>
+                </span>
+              ))}
+            </h1>
           </motion.div>
 
           {/* Floating Middle Right Elements (Socials / Contact) */}
@@ -218,7 +209,7 @@ export function HeroSection() {
                 className="group inline-flex items-center gap-3 rounded-full bg-zinc-950 px-8 py-4 text-sm font-semibold uppercase tracking-widest text-white transition-all duration-300 hover:bg-zinc-800"
               >
                 <span className="flex h-3 w-3 items-center justify-center rounded-full border-2 border-white/60 transition-colors group-hover:border-white" />
-                Register Now
+                Let&apos;s Talk
               </a>
             </div>
           </motion.div>

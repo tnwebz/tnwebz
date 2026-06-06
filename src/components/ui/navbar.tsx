@@ -33,13 +33,12 @@ export function Navbar() {
     >
       <div className="mx-auto flex flex-col gap-3">
         <div className="flex items-center justify-between gap-3">
-          <a href="/" className="text-lg sm:text-xl font-bold tracking-tight">
-            <span className="text-black">tn</span>
-            <span className="text-zinc-500">webz</span>
+          <a href="/" className="text-2xl sm:text-3xl font-bold tracking-tight text-black">
+            tnwebz
           </a>
 
           {/* Desktop nav - aligned right next to button or centered */}
-          <nav className="hidden items-center justify-center gap-8 text-xs text-zinc-600 md:flex absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2">
+          <nav className="hidden items-center justify-center gap-10 text-base text-zinc-600 md:flex absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2">
             {NAV_LINKS.map((link) => (
               <a
                 key={link.href}
@@ -53,14 +52,14 @@ export function Navbar() {
 
           <a
             href="#contact"
-            className="shrink-0 border border-black px-3 py-1.5 text-[9px] font-medium uppercase tracking-[0.14em] text-black transition-colors hover:bg-black hover:text-white sm:px-5 sm:py-2 sm:text-xs sm:tracking-[0.18em]"
+            className="shrink-0 border border-black px-5 py-2 text-xs font-medium uppercase tracking-[0.14em] text-black transition-colors hover:bg-black hover:text-white sm:px-8 sm:py-3 sm:text-base sm:tracking-[0.18em]"
           >
             Get in touch
           </a>
         </div>
 
         {/* Mobile nav */}
-        <nav className="flex gap-4 overflow-x-auto text-[10px] text-zinc-600 [-ms-overflow-style:none] [scrollbar-width:none] md:hidden [&::-webkit-scrollbar]:hidden">
+        <nav className="flex gap-4 overflow-x-auto text-sm sm:text-base text-zinc-600 [-ms-overflow-style:none] [scrollbar-width:none] md:hidden [&::-webkit-scrollbar]:hidden">
           {NAV_LINKS.map((link) => (
             <a
               key={link.href}

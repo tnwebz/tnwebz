@@ -1,11 +1,11 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Textarea } from '@/components/ui/textarea';
-import { Label } from '@/components/ui/label';
-import { Checkbox } from '@/components/ui/checkbox';
+import React, { useState, useEffect } from "react";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
+import { Checkbox } from "@/components/ui/checkbox";
 
 interface ContactSectionProps {
   /**
@@ -23,7 +23,12 @@ interface ContactSectionProps {
   /**
    * Array of social media links. Each object should have an 'id', 'name', 'iconSrc', and 'href'.
    */
-  socialLinks?: Array<{ id: string; name: string; iconSrc: string; href: string }>;
+  socialLinks?: Array<{
+    id: string;
+    name: string;
+    iconSrc: string;
+    href: string;
+  }>;
   /**
    * Callback function when the form is submitted.
    * @param data The form data.
@@ -32,22 +37,37 @@ interface ContactSectionProps {
 }
 
 const defaultSocialLinks = [
-  { id: '1', name: 'X', iconSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/x.svg', href: '#x' },
-  { id: '2', name: 'Instagram', iconSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/instagram.svg', href: '#instagram' },
-  { id: '3', name: 'LinkedIn', iconSrc: 'https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/linkedin.svg', href: '#linkedin' },
+  {
+    id: "1",
+    name: "X",
+    iconSrc: "https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/x.svg",
+    href: "#x",
+  },
+  {
+    id: "2",
+    name: "Instagram",
+    iconSrc: "https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/instagram.svg",
+    href: "#instagram",
+  },
+  {
+    id: "3",
+    name: "LinkedIn",
+    iconSrc: "https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/linkedin.svg",
+    href: "#linkedin",
+  },
 ];
 
 export const ContactSection: React.FC<ContactSectionProps> = ({
   title = "We can turn your dream project into reality",
-  mainMessage = "Let's talk! 👋",
-  contactEmail = "hello@pixelperfect.com",
+  mainMessage = "Let's talk! ",
+  contactEmail = "tnwebzz@gmail.com",
   socialLinks = defaultSocialLinks,
   onSubmit,
 }) => {
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    message: '',
+    name: "",
+    email: "",
+    message: "",
     projectType: [] as string[],
   });
 
@@ -57,7 +77,9 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
     setMounted(true);
   }, []);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
@@ -81,52 +103,46 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
   };
 
   const projectTypeOptions = [
-    'Website', 'Mobile App', 'Web App', 'E-Commerce',
-    'Brand Identity', '3D & Animation', 'Social Media Marketing',
-    'Brand Strategy & Consulting', 'Other'
+    "Website",
+    "Mobile App",
+    "Web App",
+    "E-Commerce",
+    "Brand Identity",
+    "3D & Animation",
+    "Social Media Marketing",
+    "Brand Strategy & Consulting",
+    "Other",
   ];
 
   return (
-    <section id="contact" className="relative min-h-screen w-full overflow-hidden bg-background">
+    <section
+      id="contact"
+      className="relative min-h-screen w-full overflow-hidden bg-background"
+    >
       {/* Animated Bubbles Background */}
       <div className="absolute inset-0 transition-all duration-500 ease-in-out">
         {/* Animated Bubbles */}
         <div className="absolute inset-0 z-0 overflow-hidden">
-          {mounted && Array.from({ length: 15 }).map((_, i) => (
-            <div
-              key={i}
-              className="absolute bg-white/20 rounded-full animate-bubble opacity-0"
-              style={{
-                width: `${Math.random() * 20 + 10}px`,
-                height: `${Math.random() * 20 + 10}px`,
-                left: `${Math.random() * 100}%`,
-                animationDelay: `${Math.random() * 10}s`,
-                animationDuration: `${Math.random() * 20 + 10}s`,
-                top: `${Math.random() * 100}%`, // Initial random top position
-              }}
-            />
-          ))}
+          {mounted &&
+            Array.from({ length: 15 }).map((_, i) => (
+              <div
+                key={i}
+                className="absolute bg-white/20 rounded-full animate-bubble opacity-0"
+                style={{
+                  width: `${Math.random() * 20 + 10}px`,
+                  height: `${Math.random() * 20 + 10}px`,
+                  left: `${Math.random() * 100}%`,
+                  animationDelay: `${Math.random() * 10}s`,
+                  animationDuration: `${Math.random() * 20 + 10}s`,
+                  top: `${Math.random() * 100}%`, // Initial random top position
+                }}
+              />
+            ))}
         </div>
       </div>
 
       {/* Main Content Overlay */}
       <div className="relative z-10 flex flex-col items-center justify-between w-full h-full p-4 md:p-8 lg:p-12">
-        {/* Top Navigation (simplified for this component, can be a prop or slot) */}
-        <nav className="w-full max-w-7xl flex items-center justify-between p-4 bg-card/70 backdrop-blur-sm rounded-lg shadow-lg mb-8">
-          <div className="flex items-center space-x-2">
-            <span className="font-bold text-xl text-primary">TNWebz</span>
-          </div>
-          <div className="hidden md:flex items-center space-x-6">
-            {['Services', 'Portfolio', 'Pricing', 'About'].map((item) => (
-              <a key={item} href={`#${item.toLowerCase()}`} className="text-foreground hover:text-primary transition-colors">
-                {item}
-              </a>
-            ))}
-            <Button variant="default">Get in touch</Button>
-          </div>
-          <Button variant="default" className="md:hidden">Menu</Button>
-        </nav>
-
         {/* Main Section - Grid Layout */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full max-w-7xl p-4 md:p-8 rounded-xl flex-grow">
           {/* Left Side: Title */}
@@ -138,12 +154,17 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
 
           {/* Right Side: Contact Form */}
           <div className="bg-background/90 p-6 md:p-8 rounded-lg shadow-xl border border-border">
-            <h2 className="text-2xl font-bold text-foreground mb-6">{mainMessage}</h2>
+            <h2 className="text-2xl font-bold text-foreground mb-6">
+              {mainMessage}
+            </h2>
 
             {/* Email & Socials */}
             <div className="mb-6">
               <p className="text-muted-foreground mb-2">Mail us at</p>
-              <a href={`mailto:${contactEmail}`} className="text-primary hover:underline font-medium">
+              <a
+                href={`mailto:${contactEmail}`}
+                className="text-primary hover:underline font-medium"
+              >
                 {contactEmail}
               </a>
               <div className="flex items-center space-x-3 mt-4">
@@ -152,7 +173,11 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                   <Button key={link.id} variant="outline" size="icon" asChild>
                     <a href={link.href} aria-label={link.name}>
                       {/* Using a simple placeholder for icons. In a real app, use react-icons or SVG components */}
-                      <img src={link.iconSrc} alt={link.name} className="h-4 w-4 dark:invert" />
+                      <img
+                        src={link.iconSrc}
+                        alt={link.name}
+                        className="h-4 w-4 dark:invert"
+                      />
                     </a>
                   </Button>
                 ))}
@@ -167,16 +192,33 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="space-y-2">
                   <Label htmlFor="name">Your name</Label>
-                  <Input id="name" name="name" placeholder="Your name" value={formData.name} onChange={handleChange} required />
+                  <Input
+                    id="name"
+                    name="name"
+                    placeholder="Your name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    required
+                  />
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="email">Email</Label>
-                  <Input id="email" name="email" type="email" placeholder="Email" value={formData.email} onChange={handleChange} required />
+                  <Input
+                    id="email"
+                    name="email"
+                    type="email"
+                    placeholder="Email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                  />
                 </div>
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="message">Briefly describe your project idea...</Label>
+                <Label htmlFor="message">
+                  Briefly describe your project idea...
+                </Label>
                 <Textarea
                   id="message"
                   name="message"
@@ -194,11 +236,16 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                   {projectTypeOptions.map((option) => (
                     <div key={option} className="flex items-center space-x-2">
                       <Checkbox
-                        id={option.replace(/\s/g, '-').toLowerCase()}
+                        id={option.replace(/\s/g, "-").toLowerCase()}
                         checked={formData.projectType.includes(option)}
-                        onCheckedChange={(checked) => handleCheckboxChange(option, checked as boolean)}
+                        onCheckedChange={(checked) =>
+                          handleCheckboxChange(option, checked as boolean)
+                        }
                       />
-                      <Label htmlFor={option.replace(/\s/g, '-').toLowerCase()} className="text-sm font-normal">
+                      <Label
+                        htmlFor={option.replace(/\s/g, "-").toLowerCase()}
+                        className="text-sm font-normal"
+                      >
                         {option}
                       </Label>
                     </div>
@@ -206,7 +253,10 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                 </div>
               </div>
 
-              <Button type="submit" className="w-full text-white bg-zinc-900 hover:bg-zinc-800">
+              <Button
+                type="submit"
+                className="w-full text-white bg-zinc-900 hover:bg-zinc-800"
+              >
                 Send a message
               </Button>
             </form>

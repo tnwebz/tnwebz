@@ -47,7 +47,7 @@ export function Loader() {
                 delay: 0.35,
                 ease: [0.22, 1, 0.36, 1],
               }}
-              className="text-zinc-500 font-bold"
+              className="text-black font-bold"
             >
               webz
             </motion.span>

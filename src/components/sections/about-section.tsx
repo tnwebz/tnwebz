@@ -195,13 +195,13 @@ export function AboutSection() {
                 <span className="text-zinc-600">projects delivered</span>
               </div>
             </TimelineContent>
-            <div className="lg:absolute right-0 bottom-16 flex lg:flex-col flex-row-reverse lg:gap-0 gap-4">
+            <div className="flex flex-wrap items-center justify-end gap-4 lg:gap-8">
               <TimelineContent
                 as="div"
                 animationNum={6}
                 timelineRef={heroRef}
                 customVariants={revealVariants}
-                className="flex lg:text-4xl sm:text-3xl text-2xl items-center gap-2 mb-2"
+                className="flex lg:text-3xl sm:text-3xl text-2xl items-center gap-2 mb-2"
               >
                 <span className="text-zinc-900 font-semibold">100%</span>
                 <span className="text-zinc-600 uppercase">
@@ -217,7 +217,7 @@ export function AboutSection() {
               >
                 <span className="text-zinc-900 font-bold">24/7</span>
                 <span className="text-zinc-600">support & maintenance</span>
-                <span className="text-gray-300 lg:hidden block">|</span>
+                <span className="text-gray-300 hidden">|</span>
               </TimelineContent>
             </div>
           </div>
@@ -257,7 +257,7 @@ export function AboutSection() {
                 customVariants={revealVariants}
                 className="sm:text-base text-xs"
               >
-                <p className="leading-relaxed text-justify">
+                <p className="leading-relaxed text-justify md:text-left">
                   Our journey began as passionate developers and evolved into a
                   full-service web & app development studio. We specialize in
                   transforming ideas into powerful digital products that help
@@ -271,7 +271,7 @@ export function AboutSection() {
                 customVariants={revealVariants}
                 className="sm:text-base text-xs"
               >
-                <p className="leading-relaxed text-justify">
+                <p className="leading-relaxed text-justify md:text-left">
                   Every brand has a unique vision, and we specialize in bringing
                   yours to life with precision and creativity. By blending
                   cutting-edge technology with strategic design, we build
@@ -281,8 +281,8 @@ export function AboutSection() {
             </TimelineContent>
           </div>
 
-          <div className="md:col-span-1">
-            <div className="text-right">
+          <div className="md:col-span-1 md:pl-8">
+            <div className="text-right md:text-left">
               <TimelineContent
                 as="div"
                 animationNum={12}
@@ -323,7 +323,7 @@ export function AboutSection() {
               >
                 <a
                   href="#contact"
-                  className="bg-neutral-900 hover:bg-neutral-950 shadow-lg shadow-neutral-900/20 border border-neutral-700 flex w-fit ml-auto gap-2 hover:gap-4 transition-all duration-300 ease-in-out text-white px-5 py-3 rounded-lg cursor-pointer font-semibold"
+                  className="bg-neutral-900 hover:bg-neutral-950 shadow-lg shadow-neutral-900/20 border border-neutral-700 flex w-fit ml-auto md:ml-0 gap-2 hover:gap-4 transition-all duration-300 ease-in-out text-white px-5 py-3 rounded-lg cursor-pointer font-semibold"
                 >
                   LET&apos;S COLLABORATE <ArrowRight />
                 </a>

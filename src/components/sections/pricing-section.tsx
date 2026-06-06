@@ -102,7 +102,7 @@ const PricingSwitch = ({ onSwitch }: { onSwitch: (value: string) => void }) => {
           {selected === "0" && (
             <motion.span
               layoutId={"switch"}
-              className="absolute top-0 left-0 sm:h-12 h-10 w-full rounded-full border-4 shadow-sm shadow-blue-600 border-blue-600 bg-gradient-to-t from-blue-600 via-blue-500 to-blue-600"
+              className="absolute top-0 left-0 sm:h-12 h-10 w-full rounded-full border-4 shadow-sm shadow-amber-800 border-amber-800 bg-gradient-to-t from-amber-800 via-amber-700 to-amber-800"
               transition={{ type: "spring", stiffness: 500, damping: 30 }}
             />
           )}
@@ -120,13 +120,13 @@ const PricingSwitch = ({ onSwitch }: { onSwitch: (value: string) => void }) => {
           {selected === "1" && (
             <motion.span
               layoutId={"switch"}
-              className="absolute top-0 left-0 sm:h-12 h-10 w-full rounded-full border-4 shadow-sm shadow-blue-600 border-blue-600 bg-gradient-to-t from-blue-600 via-blue-500 to-blue-600"
+              className="absolute top-0 left-0 sm:h-12 h-10 w-full rounded-full border-4 shadow-sm shadow-amber-800 border-amber-800 bg-gradient-to-t from-amber-800 via-amber-700 to-amber-800"
               transition={{ type: "spring", stiffness: 500, damping: 30 }}
             />
           )}
           <span className="relative flex items-center gap-2">
             With Maintenance
-            <span className="rounded-full bg-blue-50 px-2 py-0.5 text-xs font-medium text-blue-700">
+            <span className="rounded-full bg-amber-100 px-2 py-0.5 text-xs font-medium text-amber-900 border border-amber-200">
               Save 20%
             </span>
           </span>
