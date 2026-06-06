@@ -8,11 +8,11 @@ export function Footer() {
           {/* Brand */}
           <div className="md:col-span-1">
             <div className="flex items-center gap-2 mb-4">
-              <span className="bg-blue-600 text-white w-8 h-8 rounded-lg flex items-center justify-center text-sm font-black tracking-tight">
+              <span className="bg-zinc-800 text-white w-8 h-8 rounded-lg flex items-center justify-center text-sm font-black tracking-tight">
                 TN
               </span>
               <span className="text-white font-bold text-xl">
-                tn<span className="text-[#2019fe]">webz</span>
+                tn<span className="text-zinc-400">webz</span>
               </span>
             </div>
             <p className="text-zinc-400 text-sm leading-relaxed">
@@ -30,7 +30,7 @@ export function Footer() {
               <li>
                 <Link
                   href="#"
-                  className="hover:text-[#2019fe] transition-colors"
+                  className="hover:text-white transition-colors"
                 >
                   Website Development
                 </Link>
@@ -38,7 +38,7 @@ export function Footer() {
               <li>
                 <Link
                   href="#"
-                  className="hover:text-[#2019fe] transition-colors"
+                  className="hover:text-white transition-colors"
                 >
                   Mobile App Development
                 </Link>
@@ -46,7 +46,7 @@ export function Footer() {
               <li>
                 <Link
                   href="#"
-                  className="hover:text-[#2019fe] transition-colors"
+                  className="hover:text-white transition-colors"
                 >
                   E-Commerce Solutions
                 </Link>
@@ -54,7 +54,7 @@ export function Footer() {
               <li>
                 <Link
                   href="#"
-                  className="hover:text-[#2019fe] transition-colors"
+                  className="hover:text-white transition-colors"
                 >
                   SEO Optimization
                 </Link>
@@ -62,7 +62,7 @@ export function Footer() {
               <li>
                 <Link
                   href="#"
-                  className="hover:text-[#2019fe] transition-colors"
+                  className="hover:text-white transition-colors"
                 >
                   UI/UX Design
                 </Link>
@@ -79,7 +79,7 @@ export function Footer() {
               <li>
                 <Link
                   href="#about"
-                  className="hover:text-[#2019fe] transition-colors"
+                  className="hover:text-white transition-colors"
                 >
                   About Us
                 </Link>
@@ -87,7 +87,7 @@ export function Footer() {
               <li>
                 <Link
                   href="#portfolio"
-                  className="hover:text-[#2019fe] transition-colors"
+                  className="hover:text-white transition-colors"
                 >
                   Portfolio
                 </Link>
@@ -95,7 +95,7 @@ export function Footer() {
               <li>
                 <Link
                   href="#pricing"
-                  className="hover:text-[#2019fe] transition-colors"
+                  className="hover:text-white transition-colors"
                 >
                   Pricing
                 </Link>
@@ -103,7 +103,7 @@ export function Footer() {
               <li>
                 <Link
                   href="#contact"
-                  className="hover:text-[#2019fe] transition-colors"
+                  className="hover:text-white transition-colors"
                 >
                   Contact
                 </Link>
@@ -132,13 +132,13 @@ export function Footer() {
           <div className="flex gap-6 text-zinc-500 text-sm">
             <Link
               href="#"
-              className="hover:text-[#2019fe] transition-colors"
+              className="hover:text-white transition-colors"
             >
               Privacy Policy
             </Link>
             <Link
               href="#"
-              className="hover:text-[#2019fe] transition-colors"
+              className="hover:text-white transition-colors"
             >
               Terms of Service
             </Link>

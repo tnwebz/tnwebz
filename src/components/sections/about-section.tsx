@@ -41,13 +41,13 @@ export function AboutSection() {
   };
 
   return (
-    <section className="py-8 px-4 bg-[#f8fafc]" id="about" ref={heroRef}>
+    <section className="py-8 px-4 bg-[#f5f5f3]" id="about" ref={heroRef}>
       <div className="max-w-6xl mx-auto">
         <div className="relative">
           {/* Header with social icons */}
           <div className="flex justify-between items-center mb-8 w-[85%] absolute lg:top-4 md:top-0 sm:-top-2 -top-3 z-10">
             <div className="flex items-center gap-2 text-xl">
-              <span className="text-[#2019fe] animate-spin-slow">✱</span>
+              <span className="text-zinc-900 animate-spin-slow">✱</span>
               <TimelineContent
                 as="span"
                 animationNum={0}
@@ -186,12 +186,12 @@ export function AboutSection() {
               className="flex gap-4"
             >
               <div className="flex items-center gap-2 mb-2 sm:text-base text-xs">
-                <span className="text-[#2019fe] font-bold">3+</span>
+                <span className="text-zinc-900 font-bold">3+</span>
                 <span className="text-zinc-600">years of experience</span>
                 <span className="text-gray-300">|</span>
               </div>
               <div className="flex items-center gap-2 mb-2 sm:text-base text-xs">
-                <span className="text-[#2019fe] font-bold">50+</span>
+                <span className="text-zinc-900 font-bold">50+</span>
                 <span className="text-zinc-600">projects delivered</span>
               </div>
             </TimelineContent>
@@ -203,7 +203,7 @@ export function AboutSection() {
                 customVariants={revealVariants}
                 className="flex lg:text-4xl sm:text-3xl text-2xl items-center gap-2 mb-2"
               >
-                <span className="text-[#2019fe] font-semibold">100%</span>
+                <span className="text-zinc-900 font-semibold">100%</span>
                 <span className="text-zinc-600 uppercase">
                   client satisfaction
                 </span>
@@ -215,7 +215,7 @@ export function AboutSection() {
                 customVariants={revealVariants}
                 className="flex items-center gap-2 mb-2 sm:text-base text-xs"
               >
-                <span className="text-[#2019fe] font-bold">24/7</span>
+                <span className="text-zinc-900 font-bold">24/7</span>
                 <span className="text-zinc-600">support & maintenance</span>
                 <span className="text-gray-300 lg:hidden block">|</span>
               </TimelineContent>
@@ -226,7 +226,7 @@ export function AboutSection() {
         {/* Main Content */}
         <div className="grid md:grid-cols-3 gap-8">
           <div className="md:col-span-2">
-            <h1 className="sm:text-4xl md:text-5xl text-2xl !leading-[110%] font-semibold text-zinc-900 mb-8">
+            <h1 className="sm:text-4xl md:text-5xl text-3xl !leading-[110%] font-serif tracking-tight text-zinc-900 mb-8">
               <VerticalCutReveal
                 splitBy="words"
                 staggerDuration={0.05}
@@ -288,7 +288,7 @@ export function AboutSection() {
                 animationNum={12}
                 timelineRef={heroRef}
                 customVariants={revealVariants}
-                className="text-[#2019fe] text-2xl font-bold mb-2"
+                className="text-zinc-900 text-2xl font-bold mb-2"
               >
                 TNWEBZ
               </TimelineContent>

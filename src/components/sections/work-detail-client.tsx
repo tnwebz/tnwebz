@@ -77,7 +77,7 @@ export function WorkDetailClient({ client }: { client: ClientProject }) {
           className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-start mb-24"
         >
           <div className="lg:col-span-5 lg:sticky lg:top-24">
-            <p className="text-[#2019fe] font-medium text-sm tracking-wider uppercase mb-4">
+            <p className="text-zinc-900 font-medium text-sm tracking-wider uppercase mb-4">
               {client.title}
             </p>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-medium text-zinc-950 mb-6 tracking-tight">

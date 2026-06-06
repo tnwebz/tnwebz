@@ -80,11 +80,7 @@ const plans = [
   },
 ];
 
-const PricingSwitch = ({
-  onSwitch,
-}: {
-  onSwitch: (value: string) => void;
-}) => {
+const PricingSwitch = ({ onSwitch }: { onSwitch: (value: string) => void }) => {
   const [selected, setSelected] = useState("0");
 
   const handleSwitch = (value: string) => {
@@ -144,6 +140,28 @@ export function PricingSection() {
   const [isYearly, setIsYearly] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState("Professional");
   const pricingRef = useRef<HTMLDivElement>(null);
+  const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const handleScroll = () => {
+    if (scrollContainerRef.current) {
+      const scrollPosition = scrollContainerRef.current.scrollLeft;
+      const cardWidth = scrollContainerRef.current.scrollWidth / plans.length;
+      const newIndex = Math.round(scrollPosition / cardWidth);
+      setActiveIndex(newIndex);
+    }
+  };
+
+  const scrollTo = (index: number) => {
+    if (scrollContainerRef.current) {
+      const cardWidth = scrollContainerRef.current.scrollWidth / plans.length;
+      scrollContainerRef.current.scrollTo({
+        left: cardWidth * index,
+        behavior: "smooth",
+      });
+      setActiveIndex(index);
+    }
+  };
 
   const revealVariants = {
     visible: (i: number) => ({
@@ -167,7 +185,7 @@ export function PricingSection() {
 
   return (
     <section
-      className="w-full px-4 pt-20 pb-16 min-h-screen relative bg-white"
+      className="w-full px-4 pt-20 pb-16 min-h-screen relative bg-[#f5f5f3]"
       id="pricing"
       ref={pricingRef}
     >
@@ -175,7 +193,7 @@ export function PricingSection() {
         className="absolute top-0 left-[10%] right-[10%] w-[80%] h-full z-0"
         style={{
           backgroundImage: `
-            radial-gradient(circle at center, #2019fe 0%, transparent 70%)
+            radial-gradient(circle at center, rgba(0,0,0,0.05) 0%, transparent 70%)
           `,
           opacity: 0.06,
           mixBlendMode: "multiply",
@@ -196,7 +214,7 @@ export function PricingSection() {
             animationNum={1}
             timelineRef={pricingRef}
             customVariants={revealVariants}
-            className="border border-dashed border-blue-500 px-2 py-1 rounded-xl bg-blue-50 capitalize inline-block"
+            className="border border-dashed border-zinc-900 px-2 py-1 rounded-xl bg-zinc-200/50 capitalize inline-block"
           >
             business
           </TimelineContent>
@@ -223,7 +241,11 @@ export function PricingSection() {
         <PricingSwitch onSwitch={togglePricingPeriod} />
       </TimelineContent>
 
-      <div className="grid lg:grid-cols-3 md:grid-cols-2 max-w-7xl w-full gap-8 py-10 mx-auto px-4 sm:px-6 lg:px-8">
+      <div 
+        ref={scrollContainerRef}
+        onScroll={handleScroll}
+        className="flex md:grid overflow-x-auto snap-x snap-mandatory lg:grid-cols-3 md:grid-cols-2 max-w-7xl w-full gap-6 md:gap-8 py-10 mx-auto px-4 sm:px-6 lg:px-8 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
+      >
         {plans.map((plan, index) => (
           <TimelineContent
             key={plan.name}
@@ -231,13 +253,14 @@ export function PricingSection() {
             animationNum={4 + index}
             timelineRef={pricingRef}
             customVariants={revealVariants}
+            className="w-[85vw] sm:w-[350px] md:w-auto flex-shrink-0 snap-center"
           >
             <Card
               onClick={() => setSelectedPlan(plan.name)}
               className={`relative border-neutral-200 cursor-pointer transition-all duration-300 ${
                 selectedPlan === plan.name
-                  ? "ring-2 ring-blue-500 bg-blue-50"
-                  : "bg-white hover:border-blue-300"
+                  ? "ring-2 ring-zinc-900 bg-white shadow-xl shadow-zinc-900/5"
+                  : "bg-white/60 hover:border-zinc-400 hover:bg-white"
               }`}
             >
               <CardHeader className="text-left">
@@ -247,15 +270,13 @@ export function PricingSection() {
                   </h3>
                   {plan.popular && (
                     <div>
-                      <span className="bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-medium">
+                      <span className="bg-zinc-900 text-white px-3 py-1 rounded-full text-sm font-medium">
                         Popular
                       </span>
                     </div>
                   )}
                 </div>
-                <p className="text-sm text-zinc-600 mb-4">
-                  {plan.description}
-                </p>
+                <p className="text-sm text-zinc-600 mb-4">{plan.description}</p>
                 <div className="flex items-baseline">
                   <span className="text-4xl font-semibold text-zinc-900">
                     ₹
@@ -274,8 +295,8 @@ export function PricingSection() {
                 <button
                   className={`w-full mb-6 p-4 text-xl rounded-xl cursor-pointer transition-all duration-300 ${
                     selectedPlan === plan.name
-                      ? "bg-gradient-to-t from-blue-600 to-blue-500 shadow-lg shadow-blue-500/30 border border-blue-400 text-white hover:shadow-blue-500/50"
-                      : "bg-gradient-to-t from-neutral-900 to-neutral-600 shadow-lg shadow-neutral-900/20 border border-neutral-700 text-white hover:shadow-neutral-900/40"
+                      ? "bg-zinc-900 shadow-lg shadow-zinc-900/20 border border-zinc-800 text-white hover:bg-zinc-800"
+                      : "bg-white shadow-sm border border-neutral-200 text-zinc-900 hover:border-zinc-400"
                   }`}
                 >
                   {plan.buttonText}
@@ -300,12 +321,10 @@ export function PricingSection() {
                   <ul className="space-y-2 font-semibold">
                     {plan.includes.slice(1).map((feature, featureIndex) => (
                       <li key={featureIndex} className="flex items-center">
-                        <span className="h-6 w-6 bg-blue-50 border border-blue-500 rounded-full grid place-content-center mt-0.5 mr-3">
-                          <CheckCheck className="h-4 w-4 text-blue-600" />
+                        <span className="h-6 w-6 bg-zinc-100 border border-zinc-300 rounded-full grid place-content-center mt-0.5 mr-3">
+                          <CheckCheck className="h-4 w-4 text-zinc-900" />
                         </span>
-                        <span className="text-sm text-zinc-600">
-                          {feature}
-                        </span>
+                        <span className="text-sm text-zinc-600">{feature}</span>
                       </li>
                     ))}
                   </ul>
@@ -313,6 +332,19 @@ export function PricingSection() {
               </CardContent>
             </Card>
           </TimelineContent>
+        ))}
+      </div>
+
+      <div className="flex justify-center gap-2 md:hidden mt-2 mb-8">
+        {plans.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => scrollTo(index)}
+            className={`h-2 rounded-full transition-all duration-300 ${
+              activeIndex === index ? "w-6 bg-zinc-900" : "w-2 bg-neutral-300"
+            }`}
+            aria-label={`Go to pricing plan ${index + 1}`}
+          />
         ))}
       </div>
     </section>

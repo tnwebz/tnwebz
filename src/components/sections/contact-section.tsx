@@ -206,7 +206,7 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                 </div>
               </div>
 
-              <Button type="submit" className="w-full text-white bg-blue-600 hover:bg-blue-700">
+              <Button type="submit" className="w-full text-white bg-zinc-900 hover:bg-zinc-800">
                 Send a message
               </Button>
             </form>

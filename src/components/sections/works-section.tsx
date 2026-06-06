@@ -83,12 +83,12 @@ export function WorksSection() {
   }, [carouselApi]);
 
   return (
-    <section id="portfolio" className="py-24 md:py-32 bg-white">
+    <section id="portfolio" className="py-24 md:py-32 bg-[#f5f5f3]">
       <div className="container mx-auto px-4">
         {/* Header */}
         <div className="mb-8 flex items-end justify-between md:mb-14 lg:mb-16">
           <div className="flex flex-col gap-4">
-            <p className="text-[#2019fe] font-medium text-sm tracking-wider uppercase">
+            <p className="text-zinc-900 font-medium text-sm tracking-wider uppercase">
               Portfolio
             </p>
             <h2 className="text-3xl font-medium md:text-4xl lg:text-5xl text-zinc-900">
@@ -161,7 +161,7 @@ export function WorksSection() {
                       </div>
                       <Link
                         href={`/work/${client.id}`}
-                        className="flex items-center text-sm font-medium text-white hover:text-[#a8a5ff] transition-colors cursor-pointer"
+                        className="flex items-center text-sm font-medium text-white hover:text-zinc-300 transition-colors cursor-pointer"
                       >
                         View Works{" "}
                         <ArrowRight className="ml-2 size-5 transition-transform group-hover:translate-x-1" />
@@ -180,7 +180,7 @@ export function WorksSection() {
             <button
               key={index}
               className={`h-2 w-2 rounded-full transition-colors ${
-                currentSlide === index ? "bg-[#2019fe]" : "bg-[#2019fe]/20"
+                currentSlide === index ? "bg-zinc-900" : "bg-zinc-300"
               }`}
               onClick={() => carouselApi?.scrollTo(index)}
               aria-label={`Go to slide ${index + 1}`}

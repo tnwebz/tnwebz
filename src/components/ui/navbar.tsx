@@ -35,7 +35,7 @@ export function Navbar() {
         <div className="flex items-center justify-between gap-3">
           <a href="/" className="text-lg sm:text-xl font-bold tracking-tight">
             <span className="text-black">tn</span>
-            <span className="text-[#2019fe]">webz</span>
+            <span className="text-zinc-500">webz</span>
           </a>
 
           {/* Desktop nav - aligned right next to button or centered */}
