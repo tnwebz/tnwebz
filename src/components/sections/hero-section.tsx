@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import { Phone, Mail, MapPin } from "lucide-react";
 import { useState, useEffect } from "react";
 
@@ -22,7 +22,7 @@ const contactItems = [
   },
 ];
 
-const staggerContainer = {
+const staggerContainer: Variants = {
   hidden: {},
   visible: {
     transition: {
@@ -32,7 +32,7 @@ const staggerContainer = {
   },
 };
 
-const fadeUp = {
+const fadeUp: Variants = {
   hidden: { opacity: 0, y: 20, filter: "blur(6px)" },
   visible: {
     opacity: 1,
@@ -42,7 +42,7 @@ const fadeUp = {
   },
 };
 
-const lineReveal = {
+const lineReveal: Variants = {
   hidden: { y: "110%", opacity: 0 },
   visible: (i: number) => ({
     y: "0%",
