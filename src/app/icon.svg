@@ -1,15 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
-  <!-- Centered high-impact bold Z. monogram typography -->
-  <text x="50%" y="53%" 
+  <!-- Centered high-impact bold WZ monogram typography -->
+  <text x="50%" y="54%" 
         dominant-baseline="middle" 
         text-anchor="middle" 
         font-family="'Arial Black', Impact, system-ui, -apple-system, sans-serif" 
         font-weight="900" 
-        font-size="440" 
-        letter-spacing="-10px">
-    <!-- 'Z' in high-visibility vibrant red -->
-    <tspan fill="#FF2E2E">Z</tspan>
-    <!-- Anchor period matching the brand accent color -->
-    <tspan fill="#FF2E2E" letter-spacing="0">.</tspan>
+        font-size="360" 
+        letter-spacing="-15px"
+        fill="#FF2E2E">
+    WZ
   </text>
 </svg>
