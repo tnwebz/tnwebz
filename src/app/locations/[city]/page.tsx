@@ -19,16 +19,16 @@ export async function generateMetadata({ params }: { params: { city: string } })
   const copy = getZoneCopy(location.zone);
 
   return {
-    title: `${copy.service} | webz. Agency in ${location.cityName}`,
+    title: `${copy.service} | TNWebz Digital Studio in ${location.cityName}`,
     description: copy.description,
     alternates: {
-      canonical: `https://www.webz.in/locations/${location.slug}`,
+      canonical: `https://www.tnwebz.com/locations/${location.slug}`,
     },
     openGraph: {
       title: `Expert Web Development in ${location.cityName}`,
       description: copy.description,
-      url: `https://www.webz.in/locations/${location.slug}`,
-      siteName: 'webz. Digital Studio',
+      url: `https://www.tnwebz.com/locations/${location.slug}`,
+      siteName: 'TNWebz Digital Studio',
       locale: 'en_IN',
       type: 'website',
     },

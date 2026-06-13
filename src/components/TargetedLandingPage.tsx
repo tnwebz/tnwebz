@@ -18,8 +18,8 @@ export default function TargetedLandingPage({ cityName, copy }: LandingPageProps
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
-    "name": "webz. Digital Studio",
-    "image": "https://www.webz.in/logo.png",
+    "name": "TNWebz Digital Studio",
+    "image": "https://www.tnwebz.com/logo.png",
     "description": copy.description,
     "areaServed": {
       "@type": "City",
