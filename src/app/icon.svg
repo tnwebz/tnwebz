@@ -1,14 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="100%" height="100%">
-  <!-- Centered high-impact bold monogram typography -->
-  <text x="50%" y="54%" 
+  <!-- Centered high-impact bold Z. monogram typography -->
+  <text x="50%" y="53%" 
         dominant-baseline="middle" 
         text-anchor="middle" 
         font-family="'Arial Black', Impact, system-ui, -apple-system, sans-serif" 
         font-weight="900" 
-        font-size="310" 
-        letter-spacing="-18px">
-    <!-- 'W' in deep professional black -->
-    <tspan fill="#111111">W</tspan>
+        font-size="440" 
+        letter-spacing="-10px">
     <!-- 'Z' in high-visibility vibrant red -->
     <tspan fill="#FF2E2E">Z</tspan>
     <!-- Anchor period matching the brand accent color -->
