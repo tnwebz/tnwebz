@@ -35,7 +35,7 @@ export function Navbar() {
       <div className="mx-auto flex flex-col gap-3">
         <div className="flex items-center justify-between gap-3">
           <a href="/" className="flex items-center gap-3 text-2xl sm:text-3xl font-bold tracking-tight text-black">
-            <Image src="/icon.png" alt="TNWebz Logo" width={64} height={64} className="object-contain" />
+            <Image src="/icon.svg" alt="TNWebz Logo" width={64} height={64} className="object-contain" />
             tnwebz
           </a>
 
