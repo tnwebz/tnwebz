@@ -26,7 +26,7 @@ export function Navbar() {
   return (
     <header
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-4 py-4 sm:px-8 lg:px-14",
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-4 py-4 sm:px-8 lg:py-6 lg:px-16",
         isScrolled
           ? "bg-white/70 backdrop-blur-md shadow-sm border-b border-zinc-200/50"
           : "bg-white/20 backdrop-blur-md"
@@ -34,13 +34,13 @@ export function Navbar() {
     >
       <div className="mx-auto flex flex-col gap-3">
         <div className="flex items-center justify-between gap-3">
-          <a href="/" className="flex items-center gap-2 text-2xl sm:text-3xl font-bold tracking-tight text-black">
-            <Image src="/icon.png" alt="TNWebz Logo" width={32} height={32} className="rounded-full object-cover" />
+          <a href="/" className="flex items-center gap-3 text-2xl sm:text-3xl font-bold tracking-tight text-black">
+            <Image src="/icon.png" alt="TNWebz Logo" width={64} height={64} className="object-contain" />
             tnwebz
           </a>
 
           {/* Desktop nav - aligned right next to button or centered */}
-          <nav className="hidden items-center justify-center gap-10 text-base text-zinc-600 md:flex absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2">
+          <nav className="hidden items-center justify-center gap-10 text-sm text-zinc-600 md:flex absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2">
             {NAV_LINKS.map((link) => (
               <a
                 key={link.href}
@@ -54,7 +54,7 @@ export function Navbar() {
 
           <a
             href="#contact"
-            className="shrink-0 border border-black px-5 py-2 text-xs font-medium uppercase tracking-[0.14em] text-black transition-colors hover:bg-black hover:text-white sm:px-8 sm:py-3 sm:text-base sm:tracking-[0.18em]"
+            className="shrink-0 border border-black px-5 py-2 text-xs font-medium uppercase tracking-[0.14em] text-black transition-colors hover:bg-black hover:text-white sm:px-8 sm:py-3 sm:text-sm sm:tracking-[0.18em]"
           >
             Get in touch
           </a>
