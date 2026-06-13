@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from "react";
+import Image from "next/image";
 import { cn } from "@/lib/utils";
 
 const NAV_LINKS = [
@@ -33,7 +34,8 @@ export function Navbar() {
     >
       <div className="mx-auto flex flex-col gap-3">
         <div className="flex items-center justify-between gap-3">
-          <a href="/" className="text-2xl sm:text-3xl font-bold tracking-tight text-black">
+          <a href="/" className="flex items-center gap-2 text-2xl sm:text-3xl font-bold tracking-tight text-black">
+            <Image src="/icon.png" alt="TNWebz Logo" width={32} height={32} className="rounded-full object-cover" />
             tnwebz
           </a>
 
