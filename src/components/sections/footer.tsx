@@ -28,42 +28,27 @@ export function Footer() {
             </h4>
             <ul className="space-y-3 text-zinc-400 text-sm">
               <li>
-                <Link
-                  href="#"
-                  className="hover:text-white transition-colors"
-                >
+                <Link href="#" className="hover:text-white transition-colors">
                   Website Development
                 </Link>
               </li>
               <li>
-                <Link
-                  href="#"
-                  className="hover:text-white transition-colors"
-                >
+                <Link href="#" className="hover:text-white transition-colors">
                   Mobile App Development
                 </Link>
               </li>
               <li>
-                <Link
-                  href="#"
-                  className="hover:text-white transition-colors"
-                >
+                <Link href="#" className="hover:text-white transition-colors">
                   E-Commerce Solutions
                 </Link>
               </li>
               <li>
-                <Link
-                  href="#"
-                  className="hover:text-white transition-colors"
-                >
+                <Link href="#" className="hover:text-white transition-colors">
                   SEO Optimization
                 </Link>
               </li>
               <li>
-                <Link
-                  href="#"
-                  className="hover:text-white transition-colors"
-                >
+                <Link href="#" className="hover:text-white transition-colors">
                   UI/UX Design
                 </Link>
               </li>
@@ -117,8 +102,8 @@ export function Footer() {
               Contact
             </h4>
             <ul className="space-y-3 text-zinc-400 text-sm">
-              <li>hello@tnwebz.com</li>
-              <li>+91 98765 43210</li>
+              <li>www.tnwebz.com</li>
+              <li>+91 8608113558</li>
               <li>Tamil Nadu, India</li>
             </ul>
           </div>
@@ -130,16 +115,10 @@ export function Footer() {
             © {new Date().getFullYear()} TNWebz. All rights reserved.
           </p>
           <div className="flex gap-6 text-zinc-500 text-sm">
-            <Link
-              href="#"
-              className="hover:text-white transition-colors"
-            >
+            <Link href="#" className="hover:text-white transition-colors">
               Privacy Policy
             </Link>
-            <Link
-              href="#"
-              className="hover:text-white transition-colors"
-            >
+            <Link href="#" className="hover:text-white transition-colors">
               Terms of Service
             </Link>
           </div>

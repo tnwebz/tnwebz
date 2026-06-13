@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: { params: { city: string } })
   const copy = getZoneCopy(location.zone);
 
   return {
-    title: `${copy.service} | TNWebz Digital Studio in ${location.cityName}`,
+    title: `Website Design & App Development Studio in ${location.cityName}`,
     description: copy.description,
     alternates: {
       canonical: `https://www.tnwebz.com/locations/${location.slug}`,

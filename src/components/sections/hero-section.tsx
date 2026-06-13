@@ -17,7 +17,7 @@ const contactItems = [
   },
   {
     icon: <MapPin className="h-5 w-5" />,
-    text: "Thoothukudi, Tamil Nadu, India",
+    text: "Tamil Nadu, India",
     href: "#",
   },
 ];
@@ -47,10 +47,10 @@ const lineReveal: Variants = {
   visible: (i: number) => ({
     y: "0%",
     opacity: 1,
-    transition: { 
-      duration: 1, 
+    transition: {
+      duration: 1,
       ease: [0.16, 1, 0.3, 1],
-      delay: 0.2 + (i * 0.12)
+      delay: 0.2 + i * 0.12,
     },
   }),
 };
@@ -64,14 +64,14 @@ export function HeroSection() {
         day: "2-digit",
         month: "long",
         year: "numeric",
-      })
+      }),
     );
   }, []);
 
   return (
-    <section className="relative min-h-[100dvh] overflow-hidden bg-[#f5f5f3]">
+    <section className="relative min-h-[90dvh] lg:min-h-[100dvh] overflow-hidden bg-[#f5f5f3]">
       {/* ─── MOBILE VIEW (Preserved from original) ─── */}
-      <div className="relative z-10 flex min-h-[100dvh] flex-col lg:hidden">
+      <div className="relative z-10 flex min-h-[90dvh] lg:min-h-[100dvh] flex-col lg:hidden">
         <div className="flex flex-1 flex-col">
           <motion.div
             className="flex w-full flex-col justify-center px-6 pt-28 pb-10 sm:px-10 sm:pt-32 md:pt-36"
@@ -89,7 +89,11 @@ export function HeroSection() {
             >
               {["Build Your", "Website", "As You", "Like"].map((line, i) => (
                 <span key={i} className="block overflow-hidden pb-1">
-                  <motion.span custom={i} variants={lineReveal} className="block">
+                  <motion.span
+                    custom={i}
+                    variants={lineReveal}
+                    className="block"
+                  >
                     {line}
                   </motion.span>
                 </span>
@@ -109,10 +113,14 @@ export function HeroSection() {
             {/* CTA Button */}
             <motion.div variants={fadeUp} className="mt-8 md:mt-10">
               <a
-                href="#pricing"
+                href="https://wa.me/918608113558"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group inline-flex items-center gap-3 rounded-full bg-zinc-950 px-7 py-4 text-sm font-semibold uppercase tracking-widest text-white transition-all duration-300 hover:bg-zinc-800 hover:shadow-[0_10px_30px_rgba(0,0,0,0.15)] hover:-translate-y-0.5 sm:px-8 sm:py-4 sm:text-base"
               >
-                <span className="flex h-3 w-3 items-center justify-center rounded-full border-2 border-white/60 transition-colors group-hover:border-white" />
+                <svg className="h-5 w-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
+                </svg>
                 Let&apos;s Talk
               </a>
             </motion.div>
@@ -146,12 +154,8 @@ export function HeroSection() {
 
       {/* ─── DESKTOP VIEW (New layout matching reference) ─── */}
       <div className="relative z-10 hidden lg:flex min-h-[100dvh] w-full flex-col px-12 py-12 xl:px-16 xl:py-16">
-        
-
-
         {/* Main Content Area */}
         <div className="flex-1 relative w-full mt-16">
-          
           {/* Main Heading (Left Center) */}
           <motion.div
             className="absolute left-0 top-1/2 -translate-y-1/2 w-3/5"
@@ -170,7 +174,11 @@ export function HeroSection() {
             >
               {["Build Your", "Website", "As You Like"].map((line, i) => (
                 <span key={i} className="block overflow-hidden pb-2 pt-1">
-                  <motion.span custom={i} variants={lineReveal} className="block">
+                  <motion.span
+                    custom={i}
+                    variants={lineReveal}
+                    className="block"
+                  >
                     {line}
                   </motion.span>
                 </span>
@@ -184,11 +192,7 @@ export function HeroSection() {
             variants={fadeUp}
             initial="hidden"
             animate="visible"
-          >
-            <a href="mailto:tnwebzz@gmail.com" className="hover:text-zinc-900 transition-colors">Email</a>
-            <a href="tel:+918608113558" className="hover:text-zinc-900 transition-colors">Call</a>
-            <a href="#" className="hover:text-zinc-900 transition-colors">Location</a>
-          </motion.div>
+          ></motion.div>
 
           {/* Bottom Center / Right Text Block */}
           <motion.div
@@ -198,17 +202,24 @@ export function HeroSection() {
             animate="visible"
           >
             <p className="text-xl leading-relaxed text-zinc-800 font-medium max-w-lg">
-              We craft premium digital experiences that help businesses grow. From stunning websites to powerful applications — your vision, our expertise, delivered with precision.
+              We craft premium digital experiences that help businesses grow.
+              From stunning websites to powerful applications — your vision, our
+              expertise, delivered with precision.
             </p>
             <p className="text-lg leading-relaxed text-zinc-500 max-w-lg">
-              Creativity begins where meaning ends. When logic steps back, form takes control. What remains is pure visual intent.
+              Creativity begins where meaning ends. When logic steps back, form
+              takes control. What remains is pure visual intent.
             </p>
             <div className="mt-4">
               <a
-                href="#pricing"
+                href="https://wa.me/918608113558"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="group inline-flex items-center gap-3 rounded-full bg-zinc-950 px-8 py-4 text-sm font-semibold uppercase tracking-widest text-white transition-all duration-300 hover:bg-zinc-800"
               >
-                <span className="flex h-3 w-3 items-center justify-center rounded-full border-2 border-white/60 transition-colors group-hover:border-white" />
+                <svg className="h-5 w-5 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
+                </svg>
                 Let&apos;s Talk
               </a>
             </div>
@@ -217,7 +228,7 @@ export function HeroSection() {
 
         {/* Bottom Corners (MICRORITM) */}
         <div className="w-full flex justify-between items-end mt-12">
-          <motion.div 
+          <motion.div
             className="text-sm font-medium text-zinc-500 tracking-wide"
             variants={fadeUp}
             initial="hidden"
@@ -225,8 +236,8 @@ export function HeroSection() {
           >
             Creative direction
           </motion.div>
-          
-          <motion.div 
+
+          <motion.div
             className="text-sm font-medium text-zinc-500 tracking-wide"
             variants={fadeUp}
             initial="hidden"
@@ -235,7 +246,6 @@ export function HeroSection() {
             {today || "04 February 2026"}
           </motion.div>
         </div>
-
       </div>
     </section>
   );

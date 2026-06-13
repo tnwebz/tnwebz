@@ -47,7 +47,7 @@ export default function TargetedLandingPage({ cityName, copy }: LandingPageProps
           className="text-center space-y-6"
         >
           <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight">
-            Top-Tier {copy.service} in <span className="text-blue-600">{cityName}</span>
+            Website Design & App Development Studio in <span className="text-blue-600">{cityName}</span>
           </h1>
           <p className="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto">
             Are you losing revenue due to {copy.painPoint}? {copy.description}
