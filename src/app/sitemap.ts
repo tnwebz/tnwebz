@@ -3,7 +3,7 @@ import { MetadataRoute } from "next";
 import { locations } from "@/lib/location-data";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://tnwebz.com"; // Replace with your actual production domain
+  const baseUrl = "https://www.tnwebz.com"; // Replace with your actual production domain
 
   // 1. Static Routes
   const staticRoutes = [
