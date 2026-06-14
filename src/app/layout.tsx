@@ -17,7 +17,7 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "TNWebz — Premium Web & App Development Studio",
   description:
-    "TNWebz is a premium freelancing studio specializing in custom website development, mobile app development, and SEO-optimized digital solutions. Transform your ideas into stunning digital experiences.",
+    "TNWebz is a premium web development studio specializing in custom websites, mobile apps, and high-converting local SEO solutions.",
   keywords: [
     "web development",
     "app development",

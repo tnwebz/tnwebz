@@ -226,7 +226,7 @@ export function AboutSection() {
         {/* Main Content */}
         <div className="grid md:grid-cols-3 gap-8">
           <div className="md:col-span-2">
-            <h1 className="sm:text-4xl md:text-5xl text-3xl !leading-[110%] font-serif tracking-tight text-zinc-900 mb-8">
+            <h2 className="sm:text-4xl md:text-5xl text-3xl !leading-[110%] font-serif tracking-tight text-zinc-900 mb-8">
               <VerticalCutReveal
                 splitBy="words"
                 staggerDuration={0.05}
@@ -241,7 +241,7 @@ export function AboutSection() {
               >
                 Crafting Digital Solutions That Make a Difference.
               </VerticalCutReveal>
-            </h1>
+            </h2>
 
             <TimelineContent
               as="div"

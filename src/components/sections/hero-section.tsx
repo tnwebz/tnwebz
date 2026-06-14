@@ -163,7 +163,7 @@ export function HeroSection() {
             initial="hidden"
             animate="visible"
           >
-            <h1
+            <h2
               className="font-serif text-zinc-900 flex flex-col"
               style={{
                 fontSize: "clamp(6rem, 8.5vw, 10rem)",
@@ -183,7 +183,7 @@ export function HeroSection() {
                   </motion.span>
                 </span>
               ))}
-            </h1>
+            </h2>
           </motion.div>
 
           {/* Floating Middle Right Elements (Socials / Contact) */}

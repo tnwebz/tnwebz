@@ -147,9 +147,9 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 w-full max-w-7xl p-4 md:p-8 rounded-xl flex-grow">
           {/* Left Side: Title */}
           <div className="flex flex-col justify-end p-4 lg:p-8">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-foreground leading-tight drop-shadow-lg max-w-lg">
+            <h2 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-foreground leading-tight drop-shadow-lg max-w-lg">
               {title}
-            </h1>
+            </h2>
           </div>
 
           {/* Right Side: Contact Form */}
