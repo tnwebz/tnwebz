@@ -102,7 +102,7 @@ export function Footer() {
               Contact
             </h4>
             <ul className="space-y-3 text-zinc-400 text-sm">
-              <li>www.tnwebz.com</li>
+              <li>tnwebz.com</li>
               <li>+91 8608113558</li>
               <li>Tamil Nadu, India</li>
             </ul>

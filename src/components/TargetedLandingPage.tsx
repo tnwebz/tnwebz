@@ -1,7 +1,7 @@
 // src/components/TargetedLandingPage.tsx
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
 
 interface LandingPageProps {
   cityName: string;
@@ -13,22 +13,25 @@ interface LandingPageProps {
   };
 }
 
-export default function TargetedLandingPage({ cityName, copy }: LandingPageProps) {
+export default function TargetedLandingPage({
+  cityName,
+  copy,
+}: LandingPageProps) {
   // JSON-LD Schema for Local SEO Injection
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
-    "name": "TNWebz Digital Studio",
-    "image": "https://www.tnwebz.com/logo.png",
-    "description": copy.description,
-    "areaServed": {
+    name: "TNWebz Digital Studio",
+    image: "https://tnwebz.com/logo.png",
+    description: copy.description,
+    areaServed: {
       "@type": "City",
-      "name": cityName
+      name: cityName,
     },
-    "serviceArea": {
+    serviceArea: {
       "@type": "Place",
-      "name": cityName
-    }
+      name: cityName,
+    },
   };
 
   return (
@@ -40,22 +43,26 @@ export default function TargetedLandingPage({ cityName, copy }: LandingPageProps
       />
 
       <div className="max-w-5xl mx-auto space-y-16">
-        <motion.section 
+        <motion.section
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           className="text-center space-y-6"
         >
           <h1 className="text-4xl md:text-6xl font-extrabold tracking-tight">
-            Website Design & App Development Studio in <span className="text-blue-600">{cityName}</span>
+            Website Design & App Development Studio in{" "}
+            <span className="text-blue-600">{cityName}</span>
           </h1>
           <p className="text-lg md:text-xl text-slate-600 max-w-2xl mx-auto">
             Are you losing revenue due to {copy.painPoint}? {copy.description}
           </p>
-          
+
           <div className="flex flex-wrap justify-center gap-4 pt-4">
             {copy.features.map((feature, idx) => (
-              <span key={idx} className="px-4 py-2 bg-slate-200 text-slate-800 rounded-full text-sm font-medium">
+              <span
+                key={idx}
+                className="px-4 py-2 bg-slate-200 text-slate-800 rounded-full text-sm font-medium"
+              >
                 {feature}
               </span>
             ))}
@@ -66,14 +73,16 @@ export default function TargetedLandingPage({ cityName, copy }: LandingPageProps
           </button>
         </motion.section>
 
-        <motion.section 
+        <motion.section
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.8, delay: 0.3 }}
           className="mt-16 rounded-2xl overflow-hidden border border-slate-200 shadow-xl bg-slate-200 aspect-video flex items-center justify-center"
         >
           {/* Replace with actual Next/Image in production */}
-          <p className="text-slate-500 font-medium">[ Portfolio Mockup Rendering Here ]</p>
+          <p className="text-slate-500 font-medium">
+            [ Portfolio Mockup Rendering Here ]
+          </p>
         </motion.section>
       </div>
     </main>
