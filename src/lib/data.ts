@@ -12,10 +12,10 @@ export interface ClientProject {
 export const clients: ClientProject[] = [
   {
     id: "photo-studio",
-    title: "Lens & Light — Photography Studio",
+    title: "Sathya Photography Studio",
     description:
       "A premium showcase for professional photography. Increased booking inquiries by 120% through a stunning visual portfolio.",
-    websiteName: "Lens & Light Studio",
+    websiteName: "Sathya Photography Studio",
     websiteUrl: "https://photography-phi-three.vercel.app",
     websiteDescription:
       "High-end photography portfolio with dynamic galleries, smooth cinematic transitions, and an integrated booking system.",

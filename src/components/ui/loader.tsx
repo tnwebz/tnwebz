@@ -38,7 +38,6 @@ export function Loader() {
               tn
             </motion.span>
 
-            {/* webz */}
             <motion.span
               initial={{ scale: 0.5, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
@@ -49,7 +48,7 @@ export function Loader() {
               }}
               className="text-black font-bold"
             >
-              webz
+              web<span className="text-red-600">z</span>
             </motion.span>
 
             {/* .com */}

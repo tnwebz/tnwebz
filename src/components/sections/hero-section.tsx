@@ -206,10 +206,6 @@ export function HeroSection() {
               From stunning websites to powerful applications — your vision, our
               expertise, delivered with precision.
             </p>
-            <p className="text-lg leading-relaxed text-zinc-500 max-w-lg">
-              Creativity begins where meaning ends. When logic steps back, form
-              takes control. What remains is pure visual intent.
-            </p>
             <div className="mt-4">
               <a
                 href="https://wa.me/918608113558"
@@ -223,6 +219,30 @@ export function HeroSection() {
                 Let&apos;s Talk
               </a>
             </div>
+
+            {/* Contact Info (Desktop) */}
+            <motion.div
+              variants={staggerContainer}
+              initial="hidden"
+              animate="visible"
+              className="mt-6 flex flex-col gap-4"
+            >
+              {contactItems.map((item, index) => (
+                <motion.a
+                  key={index}
+                  href={item.href}
+                  variants={fadeUp}
+                  className="group flex items-center gap-4 text-zinc-700 transition-colors hover:text-zinc-950"
+                >
+                  <span className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full bg-zinc-900 text-white transition-transform duration-300 group-hover:scale-110">
+                    {item.icon}
+                  </span>
+                  <span className="text-base font-medium">
+                    {item.text}
+                  </span>
+                </motion.a>
+              ))}
+            </motion.div>
           </motion.div>
         </div>
 
