@@ -77,7 +77,7 @@ export const ReferralSection: React.FC = () => {
             </span>
           </div>
 
-          <h2 className="text-3xl md:text-5xl font-extrabold text-slate-900 tracking-tight">
+          <h2 className="font-sans text-3xl sm:text-4xl md:text-5xl font-bold text-slate-900 leading-tight tracking-normal">
             Refer a Project, <span className="text-red-600">Earn 10%</span>{" "}
             Commission
           </h2>
