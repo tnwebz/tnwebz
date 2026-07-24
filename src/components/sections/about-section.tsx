@@ -67,13 +67,14 @@ export function AboutSection() {
                 className="md:w-8 md:h-8 sm:w-6 w-5 sm:h-6 h-5 border border-gray-200 bg-gray-100 rounded-lg flex items-center justify-center cursor-pointer hover:bg-blue-50 hover:border-blue-200 transition-colors"
               >
                 <a
-                  href="https://www.facebook.com/"
+                  href="https://www.instagram.com/tnwebz?igsh=ZnZ3N3VtamJ2aGJ3"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="Instagram"
                 >
                   <img
-                    src="https://pro-section.ui-layouts.com/facebook.svg"
-                    alt="fb"
+                    src="https://pro-section.ui-layouts.com/instagram.svg"
+                    alt="insta"
                     width={24}
                     height={24}
                   />
@@ -87,13 +88,14 @@ export function AboutSection() {
                 className="md:w-8 md:h-8 sm:w-6 w-5 sm:h-6 h-5 border border-gray-200 bg-gray-100 rounded-lg flex items-center justify-center cursor-pointer hover:bg-blue-50 hover:border-blue-200 transition-colors"
               >
                 <a
-                  href="https://www.instagram.com/"
+                  href="https://www.linkedin.com/company/tnwebz/"
                   target="_blank"
                   rel="noopener noreferrer"
+                  aria-label="LinkedIn"
                 >
                   <img
-                    src="https://pro-section.ui-layouts.com/instagram.svg"
-                    alt="insta"
+                    src="https://pro-section.ui-layouts.com/linkedin.svg"
+                    alt="linkedin"
                     width={24}
                     height={24}
                   />
@@ -107,29 +109,10 @@ export function AboutSection() {
                 className="md:w-8 md:h-8 sm:w-6 w-5 sm:h-6 h-5 border border-gray-200 bg-gray-100 rounded-lg flex items-center justify-center cursor-pointer hover:bg-blue-50 hover:border-blue-200 transition-colors"
               >
                 <a
-                  href="https://www.linkedin.com/"
+                  href="https://www.youtube.com/@TNWebz"
                   target="_blank"
                   rel="noopener noreferrer"
-                >
-                  <img
-                    src="https://pro-section.ui-layouts.com/linkedin.svg"
-                    alt="linkedin"
-                    width={24}
-                    height={24}
-                  />
-                </a>
-              </TimelineContent>
-              <TimelineContent
-                as="div"
-                animationNum={3}
-                timelineRef={heroRef}
-                customVariants={revealVariants}
-                className="md:w-8 md:h-8 sm:w-6 w-5 sm:h-6 h-5 border border-gray-200 bg-gray-100 rounded-lg flex items-center justify-center cursor-pointer hover:bg-blue-50 hover:border-blue-200 transition-colors"
-              >
-                <a
-                  href="https://www.youtube.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  aria-label="YouTube"
                 >
                   <img
                     src="https://pro-section.ui-layouts.com/youtube.svg"

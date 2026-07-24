@@ -39,21 +39,21 @@ interface ContactSectionProps {
 const defaultSocialLinks = [
   {
     id: "1",
-    name: "X",
-    iconSrc: "https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/x.svg",
-    href: "#x",
+    name: "Instagram",
+    iconSrc: "https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/instagram.svg",
+    href: "https://www.instagram.com/tnwebz?igsh=ZnZ3N3VtamJ2aGJ3",
   },
   {
     id: "2",
-    name: "Instagram",
-    iconSrc: "https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/instagram.svg",
-    href: "#instagram",
+    name: "LinkedIn",
+    iconSrc: "https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/linkedin.svg",
+    href: "https://www.linkedin.com/company/tnwebz/",
   },
   {
     id: "3",
-    name: "LinkedIn",
-    iconSrc: "https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/linkedin.svg",
-    href: "#linkedin",
+    name: "YouTube",
+    iconSrc: "https://cdn.jsdelivr.net/npm/simple-icons@v5/icons/youtube.svg",
+    href: "https://www.youtube.com/@TNWebz",
   },
 ];
 
@@ -184,8 +184,12 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
                 <span className="text-muted-foreground">OR</span>
                 {socialLinks.map((link) => (
                   <Button key={link.id} variant="outline" size="icon" asChild>
-                    <a href={link.href} aria-label={link.name}>
-                      {/* Using a simple placeholder for icons. In a real app, use react-icons or SVG components */}
+                    <a
+                      href={link.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={link.name}
+                    >
                       <img
                         src={link.iconSrc}
                         alt={link.name}
