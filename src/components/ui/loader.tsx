@@ -9,7 +9,7 @@ export function Loader() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
-    }, 2200);
+    }, 900); // Speed up overall loading time from 2200ms to 900ms
 
     return () => clearTimeout(timer);
   }, []);
@@ -21,16 +21,15 @@ export function Loader() {
           className="fixed inset-0 z-[999] flex items-center justify-center bg-white"
           initial={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.3 }}
         >
           <div className="flex items-center text-5xl md:text-7xl font-bold tracking-tight">
-            
             {/* tn */}
             <motion.span
-              initial={{ x: -200, opacity: 0 }}
+              initial={{ x: -100, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{
-                duration: 0.9,
+                duration: 0.4,
                 ease: [0.22, 1, 0.36, 1],
               }}
               className="text-black"
@@ -42,8 +41,8 @@ export function Loader() {
               initial={{ scale: 0.5, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               transition={{
-                duration: 0.7,
-                delay: 0.35,
+                duration: 0.3,
+                delay: 0.15,
                 ease: [0.22, 1, 0.36, 1],
               }}
               className="text-black font-bold"
@@ -53,17 +52,16 @@ export function Loader() {
 
             {/* .com */}
             <motion.span
-              initial={{ x: 200, opacity: 0 }}
+              initial={{ x: 100, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{
-                duration: 0.9,
+                duration: 0.4,
                 ease: [0.22, 1, 0.36, 1],
               }}
               className="text-black"
             >
               .com
             </motion.span>
-
           </div>
         </motion.div>
       )}

@@ -6,8 +6,9 @@ import { ArrowLeft, ExternalLink, Trash2, CheckCircle2 } from "lucide-react";
 import Link from "next/link";
 import { type ClientProject } from "@/lib/data";
 import { useAdmin } from "@/lib/AdminContext";
-import { CloudinaryUpload } from "@/components/ui/cloudinary-upload";
-
+import { FirebaseUpload } from "@/components/ui/firebase-upload";
+import { db } from "@/lib/firebase";
+import { doc, setDoc, onSnapshot } from "firebase/firestore";
 function AnimatedImage({
   alt,
   src,
@@ -92,19 +93,26 @@ export function WorkDetailClient({ client }: { client: ClientProject }) {
   const [toastMsg, setToastMsg] = useState<{ message: string; id: number } | null>(null);
   const [imageToDelete, setImageToDelete] = useState<number | null>(null);
 
-  // Load images from local storage (no fallback to static data)
+  // Load images from Firestore
   useEffect(() => {
-    const storedKey = `tnwebz_gallery_${client.id}`;
-    const stored = localStorage.getItem(storedKey);
-    if (stored) {
-      try {
-        setImages(JSON.parse(stored));
-      } catch (e) {
+    const docRef = doc(db, "galleries", client.id);
+    const unsubscribe = onSnapshot(docRef, (docSnap) => {
+      if (docSnap.exists()) {
+        const data = docSnap.data();
+        if (data.images && Array.isArray(data.images)) {
+          setImages(data.images);
+        } else {
+          setImages([]);
+        }
+      } else {
         setImages([]);
       }
-    } else {
+    }, (error) => {
+      console.error("Error fetching gallery:", error);
       setImages([]);
-    }
+    });
+
+    return () => unsubscribe();
   }, [client.id]);
 
   useEffect(() => {
@@ -116,9 +124,15 @@ export function WorkDetailClient({ client }: { client: ClientProject }) {
     }
   }, [toastMsg]);
 
-  const saveImages = (newImages: { src: string; alt: string; ratio: number }[]) => {
-    setImages(newImages);
-    localStorage.setItem(`tnwebz_gallery_${client.id}`, JSON.stringify(newImages));
+  const saveImages = async (newImages: { src: string; alt: string; ratio: number }[]) => {
+    setImages(newImages); // Optimistic UI update
+    try {
+      const docRef = doc(db, "galleries", client.id);
+      await setDoc(docRef, { images: newImages }, { merge: true });
+    } catch (error) {
+      console.error("Error saving images to Firestore:", error);
+      setToastMsg({ message: "Failed to save images. Check console.", id: Date.now() });
+    }
   };
 
   const handleUploadSuccess = (urls: string[]) => {
@@ -239,7 +253,7 @@ export function WorkDetailClient({ client }: { client: ClientProject }) {
           </div>
 
           {isAdmin && (
-            <CloudinaryUpload 
+            <FirebaseUpload 
               onUploadSuccess={handleUploadSuccess} 
               maxFilesPerUpload={5}
             />

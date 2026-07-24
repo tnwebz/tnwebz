@@ -98,8 +98,21 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     onSubmit?.(formData);
-    console.log("Form submitted:", formData);
-    // You might want to add a success message or clear the form here
+
+    const message =
+      `*📩 NEW CONTACT INQUIRY via TNWebz Website*\n\n` +
+      `*👤 Name:* ${formData.name.trim()}\n` +
+      `*📧 Email:* ${formData.email.trim()}\n` +
+      `*💬 Message:* ${formData.message.trim()}\n` +
+      `*🎯 Looking for:* ${
+        formData.projectType.length > 0 ? formData.projectType.join(", ") : "General Inquiry"
+      }\n\n` +
+      `---\n*Sent from TNWebz Contact Form*`;
+
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappUrl = `https://wa.me/918608113558?text=${encodedMessage}`;
+
+    window.open(whatsappUrl, "_blank");
   };
 
   const projectTypeOptions = [

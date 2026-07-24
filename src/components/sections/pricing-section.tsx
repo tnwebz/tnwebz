@@ -292,15 +292,16 @@ export function PricingSection() {
               </CardHeader>
 
               <CardContent className="pt-0">
-                <button
-                  className={`w-full mb-6 p-4 text-xl rounded-xl cursor-pointer transition-all duration-300 ${
+                <a
+                  href="#contact"
+                  className={`w-full mb-6 p-4 text-xl font-medium rounded-xl cursor-pointer transition-all duration-300 block text-center ${
                     selectedPlan === plan.name
                       ? "bg-zinc-900 shadow-lg shadow-zinc-900/20 border border-zinc-800 text-white hover:bg-zinc-800"
                       : "bg-white shadow-sm border border-neutral-200 text-zinc-900 hover:border-zinc-400"
                   }`}
                 >
                   {plan.buttonText}
-                </button>
+                </a>
                 <ul className="space-y-2 font-semibold py-5">
                   {plan.features.map((feature, featureIndex) => (
                     <li key={featureIndex} className="flex items-center">

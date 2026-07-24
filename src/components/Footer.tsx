@@ -51,6 +51,11 @@ export default function Footer() {
                   Contact
                 </Link>
               </li>
+              <li>
+                <Link href="#refer-and-earn" className="hover:text-red-400 font-medium transition-colors">
+                  Refer & Earn (10%)
+                </Link>
+              </li>
             </ul>
           </div>
 

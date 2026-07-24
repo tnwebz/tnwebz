@@ -11,16 +11,17 @@ const NAV_LINKS = [
   { href: "#pricing", label: "Pricing" },
   { href: "#portfolio", label: "Portfolio" },
   { href: "#contact", label: "Contact" },
+  { href: "#refer-and-earn", label: "Refer & Earn" },
 ];
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  
+
   const { isAdmin, toggleAdmin } = useAdmin();
   const [clickCount, setClickCount] = useState(0);
   const clickTimeoutRef = useRef<NodeJS.Timeout | null>(null);
-  
+
   // Password modal state
   const [showPasswordModal, setShowPasswordModal] = useState(false);
   const [passwordInput, setPasswordInput] = useState("");
@@ -37,11 +38,11 @@ export function Navbar() {
 
   const handleShieldClick = () => {
     setClickCount((prev) => prev + 1);
-    
+
     if (clickTimeoutRef.current) {
       clearTimeout(clickTimeoutRef.current);
     }
-    
+
     clickTimeoutRef.current = setTimeout(() => {
       setClickCount(0);
     }, 1000); // reset count after 1s
@@ -77,23 +78,36 @@ export function Navbar() {
           "fixed top-0 left-0 right-0 z-50 transition-all duration-300 px-4 py-4 sm:px-8 lg:py-6 lg:px-16",
           isScrolled || isMenuOpen
             ? "bg-white/90 backdrop-blur-md shadow-sm border-b border-zinc-200/50"
-            : "bg-white/20 backdrop-blur-md"
+            : "bg-white/20 backdrop-blur-md",
         )}
       >
         <div className="mx-auto flex flex-col">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
               {/* Desktop Shield */}
-              <button 
+              <button
                 onClick={handleShieldClick}
                 className="hidden md:flex items-center justify-center text-zinc-400 hover:text-zinc-600 transition-colors"
                 aria-label="Toggle Mode"
               >
-                {isAdmin ? <ShieldCheck className="h-5 w-5 text-green-600" /> : <Shield className="h-5 w-5" />}
+                {isAdmin ? (
+                  <ShieldCheck className="h-5 w-5 text-green-600" />
+                ) : (
+                  <Shield className="h-5 w-5" />
+                )}
               </button>
-              <a href="/" className="flex items-center gap-2 text-xl sm:text-2xl font-bold tracking-tight text-black">
-                <Image src="/icon.svg" alt="TNWebz Logo" width={36} height={36} className="object-contain" />
-                tnwebz
+              <a
+                href="/"
+                className="flex items-center gap-2 text-xl sm:text-2xl font-bold tracking-tight text-black"
+              >
+                <Image
+                  src="/icon.svg"
+                  alt="TNWebz Logo"
+                  width={36}
+                  height={36}
+                  className="object-contain"
+                />
+                TNWebz
               </a>
             </div>
 
@@ -111,11 +125,15 @@ export function Navbar() {
             </nav>
 
             {/* Mobile Menu Toggle */}
-            <button 
+            <button
               className="md:hidden p-2 text-black transition-colors"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
-              {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              {isMenuOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
             </button>
           </div>
 
@@ -133,12 +151,16 @@ export function Navbar() {
                 </a>
               ))}
               {/* Mobile Shield */}
-              <button 
+              <button
                 onClick={handleShieldClick}
                 className="flex items-center justify-start text-zinc-400 hover:text-zinc-600 transition-colors pt-2 border-t border-zinc-100"
                 aria-label="Toggle Mode"
               >
-                {isAdmin ? <ShieldCheck className="h-5 w-5 text-green-600" /> : <Shield className="h-5 w-5" />}
+                {isAdmin ? (
+                  <ShieldCheck className="h-5 w-5 text-green-600" />
+                ) : (
+                  <Shield className="h-5 w-5" />
+                )}
               </button>
             </nav>
           )}
@@ -149,7 +171,7 @@ export function Navbar() {
       {showPasswordModal && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/40 backdrop-blur-sm p-4">
           <div className="bg-white rounded-2xl shadow-2xl p-6 w-full max-w-sm relative animate-in fade-in zoom-in-95 duration-200">
-            <button 
+            <button
               onClick={() => setShowPasswordModal(false)}
               className="absolute top-4 right-4 text-zinc-400 hover:text-zinc-600 transition-colors"
             >
@@ -160,9 +182,11 @@ export function Navbar() {
                 <Shield className="w-6 h-6 text-zinc-900" />
               </div>
               <h3 className="text-xl font-bold text-zinc-900">Admin Access</h3>
-              <p className="text-sm text-zinc-500 mt-1">Please enter the security PIN to continue.</p>
+              <p className="text-sm text-zinc-500 mt-1">
+                Please enter the security PIN to continue.
+              </p>
             </div>
-            
+
             <form onSubmit={handlePasswordSubmit}>
               <input
                 type="password"

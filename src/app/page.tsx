@@ -4,6 +4,7 @@ import { WorksSection } from "@/components/sections/works-section";
 import { PricingSection } from "@/components/sections/pricing-section";
 import { ChatSection } from "@/components/sections/chat-section";
 import { ContactSection } from "@/components/sections/contact-section";
+import { ReferralSection } from "@/components/sections/referral-section";
 import { Loader } from "@/components/ui/loader";
 
 export default function Home() {
@@ -16,6 +17,8 @@ export default function Home() {
       <PricingSection />
       <ChatSection />
       <ContactSection />
+      <ReferralSection />
     </>
   );
 }
+
