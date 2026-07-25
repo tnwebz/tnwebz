@@ -21,8 +21,8 @@ const plans = [
     name: "Starter",
     description:
       "Perfect for small businesses and personal brands looking to establish their online presence.",
-    price: 3000,
-    yearlyPrice: 2400,
+    price: 4000,
+    yearlyPrice: 3000,
     buttonText: "Get Started",
     buttonVariant: "outline" as const,
     features: [
@@ -41,8 +41,8 @@ const plans = [
     name: "Professional",
     description:
       "Ideal for growing businesses that need a polished and feature-rich website.",
-    price: 6000,
-    yearlyPrice: 4800,
+    price: 8500,
+    yearlyPrice: 6800,
     buttonText: "Get Started",
     buttonVariant: "default" as const,
     popular: true,
@@ -62,8 +62,8 @@ const plans = [
     name: "Enterprise",
     description:
       "Advanced solution with industrial-grade architecture for large-scale applications.",
-    price: 15000,
-    yearlyPrice: 12000,
+    price: 25000,
+    yearlyPrice: 20000,
     buttonText: "Get Started",
     buttonVariant: "outline" as const,
     features: [
@@ -241,7 +241,7 @@ export function PricingSection() {
         <PricingSwitch onSwitch={togglePricingPeriod} />
       </TimelineContent>
 
-      <div 
+      <div
         ref={scrollContainerRef}
         onScroll={handleScroll}
         className="flex md:grid overflow-x-auto snap-x snap-mandatory lg:grid-cols-3 md:grid-cols-2 max-w-7xl w-full gap-6 md:gap-8 py-10 mx-auto px-4 sm:px-6 lg:px-8 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]"
