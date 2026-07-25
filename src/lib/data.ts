@@ -69,6 +69,34 @@ export const clients: ClientProject[] = [
     ],
   },
   {
+    id: "subha-modeling-studio",
+    title: "Subha Modeling Studio",
+    description:
+      "A premier fashion & modeling studio portfolio showcasing creative talent, editorial shoots, and professional management.",
+    websiteName: "Subha Modeling Studio",
+    websiteUrl: "https://subhamodelingstudio.tnwebz.com",
+    websiteDescription:
+      "High-end fashion modeling studio website featuring model portfolios, editorial showcases, casting inquiries, and shoot bookings.",
+    image: "/sub.jpg",
+    screenshots: [
+      { src: "/sub.jpg", alt: "Subha Modeling Studio homepage hero", ratio: 16 / 9 },
+    ],
+  },
+  {
+    id: "armburst-gym",
+    title: "ARMBURST Gym — Fitness Center",
+    description:
+      "A bold, high-intensity website for ARMBURST Gym. Elevated the brand's online presence and streamlined membership inquiries.",
+    websiteName: "ARMBURST Gym",
+    websiteUrl: "https://armburstgym.tnwebz.com",
+    websiteDescription:
+      "Modern fitness center website showcasing state-of-the-art facilities, specialized training programs, expert coaches, and membership details.",
+    image: "/e (1).png",
+    screenshots: [
+      { src: "/e (1).png", alt: "ARMBURST Gym homepage hero", ratio: 16 / 9 },
+    ],
+  },
+  {
     id: "dry-fruits-nuts",
     title: "Dry Fruits & Nuts — E-Commerce",
     description:
@@ -87,17 +115,17 @@ export const clients: ClientProject[] = [
     ],
   },
   {
-    id: "armburst-gym",
-    title: "ARMBURST Gym — Fitness Center",
+    id: "lights-up-candles",
+    title: "Light's Up Candles",
     description:
-      "A bold, high-intensity website for ARMBURST Gym. Elevated the brand's online presence and streamlined membership inquiries.",
-    websiteName: "ARMBURST Gym",
-    websiteUrl: "https://armburstgym.tnwebz.com",
+      "An elegant handcrafted candle shop featuring artisan scented candles, custom gift sets, and serene lifestyle collections.",
+    websiteName: "Light's Up Candles",
+    websiteUrl: "https://candles-beige.vercel.app",
     websiteDescription:
-      "Modern fitness center website showcasing state-of-the-art facilities, specialized training programs, expert coaches, and membership details.",
-    image: "/e (1).png",
+      "Artisan candles storefront showcasing premium hand-poured candles, scent notes, aesthetic decor collections, and easy online ordering.",
+    image: "/lit.png",
     screenshots: [
-      { src: "/e (1).png", alt: "ARMBURST Gym homepage hero", ratio: 16 / 9 },
+      { src: "/lit.png", alt: "Light's Up Candles homepage hero", ratio: 16 / 9 },
     ],
   },
 ];
