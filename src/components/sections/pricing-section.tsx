@@ -61,7 +61,7 @@ const plans = [
   {
     name: "Enterprise",
     description:
-      "Advanced solution with industrial-grade architecture for large-scale applications.",
+      "Advanced solution with industrial-grade architecture for large-scale applications Starts From.",
     price: 25000,
     yearlyPrice: 20000,
     buttonText: "Get Started",
