@@ -5,6 +5,7 @@ import { Navbar } from "@/components/ui/navbar";
 import Footer from "@/components/Footer";
 import { FloatingWhatsApp } from "@/components/ui/floating-whatsapp";
 import { AdminProvider } from "@/lib/AdminContext";
+import { Analytics } from "@vercel/analytics/next";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -55,6 +56,7 @@ export default function RootLayout({
           <Footer />
           <FloatingWhatsApp />
         </AdminProvider>
+        <Analytics />
       </body>
     </html>
   );
