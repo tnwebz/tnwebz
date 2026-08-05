@@ -62,7 +62,7 @@ export function Navbar() {
 
   const handlePasswordSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (passwordInput === "777") {
+    if (passwordInput === "0728") {
       toggleAdmin();
       setShowPasswordModal(false);
       setPasswordInput("");
