@@ -15,9 +15,10 @@ export function generateStaticParams() {
 export async function generateMetadata({
   params,
 }: {
-  params: { city: string };
+  params: Promise<{ city: string }>;
 }): Promise<Metadata> {
-  const location = locations.find((loc) => loc.slug === params.city);
+  const { city } = await params;
+  const location = locations.find((loc) => loc.slug === city);
   if (!location) return { title: "Location Not Found" };
 
   const copy = getZoneCopy(location.zone);
@@ -40,8 +41,13 @@ export async function generateMetadata({
 }
 
 // 3. Render the Page Component
-export default function LocationPage({ params }: { params: { city: string } }) {
-  const location = locations.find((loc) => loc.slug === params.city);
+export default async function LocationPage({
+  params,
+}: {
+  params: Promise<{ city: string }>;
+}) {
+  const { city } = await params;
+  const location = locations.find((loc) => loc.slug === city);
 
   if (!location) {
     notFound();

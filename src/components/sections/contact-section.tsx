@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
 import { Checkbox } from "@/components/ui/checkbox";
+import { openWhatsApp } from "@/lib/whatsapp";
 
 interface ContactSectionProps {
   /**
@@ -100,19 +101,16 @@ export const ContactSection: React.FC<ContactSectionProps> = ({
     onSubmit?.(formData);
 
     const message =
-      `*📩 NEW CONTACT INQUIRY via TNWebz Website*\n\n` +
-      `*👤 Name:* ${formData.name.trim()}\n` +
-      `*📧 Email:* ${formData.email.trim()}\n` +
-      `*💬 Message:* ${formData.message.trim()}\n` +
-      `*🎯 Looking for:* ${
+      `*NEW CONTACT INQUIRY via TNWebz Website*\n\n` +
+      `*Name:* ${formData.name.trim()}\n` +
+      `*Email:* ${formData.email.trim()}\n` +
+      `*Message:* ${formData.message.trim()}\n` +
+      `*Looking for:* ${
         formData.projectType.length > 0 ? formData.projectType.join(", ") : "General Inquiry"
       }\n\n` +
       `---\n*Sent from TNWebz Contact Form*`;
 
-    const encodedMessage = encodeURIComponent(message);
-    const whatsappUrl = `https://wa.me/918608113558?text=${encodedMessage}`;
-
-    window.open(whatsappUrl, "_blank");
+    openWhatsApp("918608113558", message);
   };
 
   const projectTypeOptions = [

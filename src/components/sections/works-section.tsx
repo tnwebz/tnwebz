@@ -141,7 +141,10 @@ export function WorksSection() {
                 key={client.id}
                 className="max-w-[320px] pl-4 sm:pl-6 lg:max-w-[360px]"
               >
-                <div className="group rounded-xl">
+                <Link
+                  href={`/work/${client.id}`}
+                  className="block group rounded-xl h-full cursor-pointer"
+                >
                   <div className="group relative h-full min-h-[27rem] max-w-full overflow-hidden rounded-xl md:aspect-[5/4] lg:aspect-[16/9]">
                     <img
                       src={client.image}
@@ -160,16 +163,13 @@ export function WorksSection() {
                       <div className="mb-8 line-clamp-2 text-white/80 md:mb-12 lg:mb-9">
                         {client.description}
                       </div>
-                      <Link
-                        href={`/work/${client.id}`}
-                        className="flex items-center text-sm font-medium text-white hover:text-zinc-300 transition-colors cursor-pointer"
-                      >
+                      <span className="flex items-center text-sm font-medium text-white group-hover:text-zinc-300 transition-colors">
                         View Works{" "}
                         <ArrowRight className="ml-2 size-5 transition-transform group-hover:translate-x-1" />
-                      </Link>
+                      </span>
                     </div>
                   </div>
-                </div>
+                </Link>
               </CarouselItem>
             ))}
           </CarouselContent>

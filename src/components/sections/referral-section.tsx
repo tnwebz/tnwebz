@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Label } from "@/components/ui/label";
+import { openWhatsApp } from "@/lib/whatsapp";
 import {
   Gift,
   ChevronDown,
@@ -39,20 +40,17 @@ export const ReferralSection: React.FC = () => {
     }
 
     const message =
-      `*🚀 NEW REFERRAL SUBMISSION (10% Commission Program)*\n\n` +
-      `*👤 Referrer Details (Your Info):*\n` +
+      `*NEW REFERRAL SUBMISSION (10% Commission Program)*\n\n` +
+      `*Referrer Details (Your Info):*\n` +
       `• *Name:* ${referrerName.trim()}\n` +
       `• *Phone/WhatsApp:* ${referrerPhone.trim()}\n\n` +
-      `*🤝 Referred Person Details:*\n` +
+      `*Referred Person Details:*\n` +
       `• *Client Name:* ${clientName.trim()}\n` +
       `• *Phone/Email:* ${clientContact.trim()}\n` +
       `• *Project Notes:* ${projectDetails.trim() || "N/A"}\n\n` +
       `---\n*Sent from TNWebz Refer & Earn Portal*`;
 
-    const encodedMessage = encodeURIComponent(message);
-    const whatsappUrl = `https://wa.me/918608113558?text=${encodedMessage}`;
-
-    window.open(whatsappUrl, "_blank");
+    openWhatsApp("918608113558", message);
   };
 
   return (

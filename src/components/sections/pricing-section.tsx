@@ -11,18 +11,22 @@ import {
   Users,
   Palette,
   Search,
-  Heart,
+  Pencil,
+  X,
 } from "lucide-react";
-import { motion } from "framer-motion";
-import { useRef, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { useRef, useState, useEffect } from "react";
+import { useAdmin } from "@/lib/AdminContext";
+import { db } from "@/lib/firebase";
+import { doc, setDoc, onSnapshot } from "firebase/firestore";
 
-const plans = [
+const defaultPlans = [
   {
     name: "Starter",
     description:
       "Perfect for small businesses and personal brands looking to establish their online presence.",
-    price: 4000,
-    yearlyPrice: 3000,
+    price: 3999,
+    yearlyPrice: 2999,
     buttonText: "Get Started",
     buttonVariant: "outline" as const,
     features: [
@@ -41,8 +45,8 @@ const plans = [
     name: "Professional",
     description:
       "Ideal for growing businesses that need a polished and feature-rich website.",
-    price: 8500,
-    yearlyPrice: 6800,
+    price: 14999,
+    yearlyPrice: 11999,
     buttonText: "Get Started",
     buttonVariant: "default" as const,
     popular: true,
@@ -62,8 +66,8 @@ const plans = [
     name: "Enterprise",
     description:
       "Advanced solution with industrial-grade architecture for large-scale applications Starts From.",
-    price: 25000,
-    yearlyPrice: 20000,
+    price: 29999,
+    yearlyPrice: 23999,
     buttonText: "Get Started",
     buttonVariant: "outline" as const,
     features: [
@@ -137,11 +141,92 @@ const PricingSwitch = ({ onSwitch }: { onSwitch: (value: string) => void }) => {
 };
 
 export function PricingSection() {
+  const { isAdmin } = useAdmin();
+  const [plans, setPlans] = useState(defaultPlans);
   const [isYearly, setIsYearly] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState("Professional");
   const pricingRef = useRef<HTMLDivElement>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [activeIndex, setActiveIndex] = useState(0);
+
+  // Admin Edit Modal state
+  const [editingPlan, setEditingPlan] = useState<(typeof defaultPlans)[0] | null>(null);
+  const [editPrice, setEditPrice] = useState<number>(0);
+  const [editYearlyPrice, setEditYearlyPrice] = useState<number>(0);
+  const [isSaving, setIsSaving] = useState(false);
+
+  // Sync pricing with Firestore database
+  useEffect(() => {
+    const docRef = doc(db, "settings", "pricing");
+    const unsubscribe = onSnapshot(
+      docRef,
+      (snapshot) => {
+        if (snapshot.exists()) {
+          const data = snapshot.data();
+          if (data.prices) {
+            setPlans((prev) =>
+              prev.map((plan) => {
+                const updated = data.prices[plan.name];
+                if (updated) {
+                  return {
+                    ...plan,
+                    price: typeof updated.price === "number" ? updated.price : plan.price,
+                    yearlyPrice: typeof updated.yearlyPrice === "number" ? updated.yearlyPrice : plan.yearlyPrice,
+                  };
+                }
+                return plan;
+              })
+            );
+          }
+        }
+      },
+      (error) => {
+        console.error("Error fetching pricing from Firestore:", error);
+      }
+    );
+
+    return () => unsubscribe();
+  }, []);
+
+  const handleSavePrice = async () => {
+    if (!editingPlan) return;
+    setIsSaving(true);
+
+    const priceMap: Record<string, { price: number; yearlyPrice: number }> = {};
+    plans.forEach((p) => {
+      if (p.name === editingPlan.name) {
+        priceMap[p.name] = {
+          price: editPrice,
+          yearlyPrice: editYearlyPrice,
+        };
+      } else {
+        priceMap[p.name] = {
+          price: p.price,
+          yearlyPrice: p.yearlyPrice,
+        };
+      }
+    });
+
+    // Optimistically update UI
+    setPlans((prev) =>
+      prev.map((p) =>
+        p.name === editingPlan.name
+          ? { ...p, price: editPrice, yearlyPrice: editYearlyPrice }
+          : p
+      )
+    );
+
+    try {
+      const docRef = doc(db, "settings", "pricing");
+      await setDoc(docRef, { prices: priceMap }, { merge: true });
+      setEditingPlan(null);
+    } catch (error) {
+      console.error("Failed to save price to Firestore:", error);
+      alert("Failed to save price change to database.");
+    } finally {
+      setIsSaving(false);
+    }
+  };
 
   const handleScroll = () => {
     if (scrollContainerRef.current) {
@@ -264,7 +349,7 @@ export function PricingSection() {
               }`}
             >
               <CardHeader className="text-left">
-                <div className="flex justify-between">
+                <div className="flex justify-between items-start">
                   <h3 className="text-3xl font-semibold text-zinc-900 mb-2">
                     {plan.name}
                   </h3>
@@ -277,17 +362,36 @@ export function PricingSection() {
                   )}
                 </div>
                 <p className="text-sm text-zinc-600 mb-4">{plan.description}</p>
-                <div className="flex items-baseline">
-                  <span className="text-4xl font-semibold text-zinc-900">
-                    ₹
-                    <NumberFlow
-                      value={isYearly ? plan.yearlyPrice : plan.price}
-                      className="text-4xl font-semibold"
-                    />
-                  </span>
-                  <span className="text-zinc-600 ml-1">
-                    /{isYearly ? "with maintenance" : "one-time"}
-                  </span>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-baseline">
+                    <span className="text-4xl font-semibold text-zinc-900">
+                      ₹
+                      <NumberFlow
+                        value={isYearly ? plan.yearlyPrice : plan.price}
+                        className="text-4xl font-semibold"
+                      />
+                    </span>
+                    <span className="text-zinc-600 ml-1">
+                      /{isYearly ? "with maintenance" : "one-time"}
+                    </span>
+                  </div>
+
+                  {/* Tiny Admin Edit Button */}
+                  {isAdmin && (
+                    <button
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setEditingPlan(plan);
+                        setEditPrice(plan.price);
+                        setEditYearlyPrice(plan.yearlyPrice);
+                      }}
+                      className="flex items-center gap-1 px-2.5 py-1 text-xs font-semibold rounded-full bg-red-100 hover:bg-red-200 text-red-800 border border-red-200 transition-all cursor-pointer shadow-xs shrink-0"
+                      title="Edit Plan Price (Admin Only)"
+                    >
+                      <Pencil className="w-3 h-3" />
+                      <span>Edit</span>
+                    </button>
+                  )}
                 </div>
               </CardHeader>
 
@@ -348,6 +452,87 @@ export function PricingSection() {
           />
         ))}
       </div>
+
+      {/* Admin Price Edit Modal */}
+      <AnimatePresence>
+        {isAdmin && editingPlan && (
+          <div
+            className="fixed inset-0 z-[300] flex items-center justify-center bg-black/50 backdrop-blur-xs p-4 animate-in fade-in duration-200"
+            onClick={() => setEditingPlan(null)}
+          >
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 10 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 10 }}
+              className="bg-white rounded-2xl p-6 md:p-8 max-w-md w-full shadow-2xl border border-neutral-200 relative space-y-6"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <div className="flex justify-between items-center pb-4 border-b border-neutral-100">
+                <div className="flex items-center gap-2">
+                  <Pencil className="w-5 h-5 text-red-600" />
+                  <h3 className="text-xl font-bold text-zinc-900">
+                    Edit {editingPlan.name} Price
+                  </h3>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setEditingPlan(null)}
+                  className="p-1.5 rounded-lg text-zinc-400 hover:text-zinc-700 hover:bg-zinc-100 transition-colors"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+
+              <div className="space-y-4">
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-zinc-700">
+                    One-time Price (₹)
+                  </label>
+                  <input
+                    type="number"
+                    value={editPrice}
+                    onChange={(e) => setEditPrice(Number(e.target.value))}
+                    className="w-full px-4 py-2.5 rounded-xl border border-zinc-300 focus:outline-none focus:ring-2 focus:ring-red-500 font-semibold text-lg"
+                    placeholder="e.g. 3999"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <label className="text-sm font-medium text-zinc-700">
+                    With Maintenance Price (₹)
+                  </label>
+                  <input
+                    type="number"
+                    value={editYearlyPrice}
+                    onChange={(e) => setEditYearlyPrice(Number(e.target.value))}
+                    className="w-full px-4 py-2.5 rounded-xl border border-zinc-300 focus:outline-none focus:ring-2 focus:ring-red-500 font-semibold text-lg"
+                    placeholder="e.g. 2999"
+                  />
+                </div>
+              </div>
+
+              <div className="flex gap-3 pt-2">
+                <button
+                  type="button"
+                  onClick={() => setEditingPlan(null)}
+                  className="flex-1 py-2.5 px-4 rounded-xl border border-zinc-200 text-zinc-700 font-medium hover:bg-zinc-50 transition-colors cursor-pointer"
+                  disabled={isSaving}
+                >
+                  Cancel
+                </button>
+                <button
+                  type="button"
+                  onClick={handleSavePrice}
+                  className="flex-1 py-2.5 px-4 rounded-xl bg-zinc-900 text-white font-medium hover:bg-zinc-800 transition-colors shadow-md flex items-center justify-center gap-2 cursor-pointer"
+                  disabled={isSaving}
+                >
+                  {isSaving ? "Saving..." : "Save Price"}
+                </button>
+              </div>
+            </motion.div>
+          </div>
+        )}
+      </AnimatePresence>
     </section>
   );
 }
