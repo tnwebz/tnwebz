@@ -74,7 +74,7 @@ export function AboutSection() {
                 >
                   <img
                     src="https://pro-section.ui-layouts.com/instagram.svg"
-                    alt="insta"
+                    alt="TNWebz Instagram profile"
                     width={24}
                     height={24}
                   />
@@ -95,7 +95,7 @@ export function AboutSection() {
                 >
                   <img
                     src="https://pro-section.ui-layouts.com/linkedin.svg"
-                    alt="linkedin"
+                    alt="TNWebz LinkedIn company page"
                     width={24}
                     height={24}
                   />
@@ -116,7 +116,7 @@ export function AboutSection() {
                 >
                   <img
                     src="https://pro-section.ui-layouts.com/youtube.svg"
-                    alt="youtube"
+                    alt="TNWebz YouTube channel"
                     width={24}
                     height={24}
                   />
@@ -222,7 +222,7 @@ export function AboutSection() {
                   delay: 0.2,
                 }}
               >
-                Crafting Digital Solutions That Make a Difference.
+                Building Digital Experiences That Help Businesses Grow.
               </VerticalCutReveal>
             </h2>
 
@@ -241,10 +241,7 @@ export function AboutSection() {
                 className="sm:text-base text-xs"
               >
                 <p className="leading-relaxed text-justify md:text-left">
-                  Our journey began as passionate developers and evolved into a
-                  full-service web & app development studio. We specialize in
-                  transforming ideas into powerful digital products that help
-                  businesses grow and thrive in the digital landscape.
+                  TNWebz is a web and app development studio in Chennai, Tamil Nadu, helping businesses turn their ideas into modern digital experiences. We build responsive business websites, e-commerce platforms and custom web solutions designed around each client's goals.
                 </p>
               </TimelineContent>
               <TimelineContent
@@ -255,10 +252,7 @@ export function AboutSection() {
                 className="sm:text-base text-xs"
               >
                 <p className="leading-relaxed text-justify md:text-left">
-                  Every brand has a unique vision, and we specialize in bringing
-                  yours to life with precision and creativity. By blending
-                  cutting-edge technology with strategic design, we build
-                  solutions that resonate with your audience and deliver results.
+                  From a professional business website to a custom web application or mobile app, we combine thoughtful design with reliable development to create digital products that are fast, responsive and easy to use. We work with businesses across Chennai and nearby areas.
                 </p>
               </TimelineContent>
             </TimelineContent>
@@ -282,7 +276,7 @@ export function AboutSection() {
                 customVariants={revealVariants}
                 className="text-zinc-600 text-sm mb-8"
               >
-                Web & App Development Studio
+                Website & App Development Studio in Chennai
               </TimelineContent>
 
               <TimelineContent
@@ -293,8 +287,7 @@ export function AboutSection() {
                 className="mb-6"
               >
                 <p className="text-zinc-900 font-medium mb-4">
-                  Ready to transform your vision into a stunning digital
-                  product?
+                  Need a website or app for your business? Let's build a digital solution around your goals.
                 </p>
               </TimelineContent>
 

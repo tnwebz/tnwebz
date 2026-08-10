@@ -1,59 +1,108 @@
 // src/app/locations/[city]/page.tsx
+
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import TargetedLandingPage from "@/components/TargetedLandingPage";
-import { locations, getZoneCopy } from "@/lib/location-data";
+import { LocationPageContent } from "@/components/sections/location-page-content";
+import { locations, getLocationBySlug } from "@/lib/location-data";
+import {
+  generateLocalServiceSchema,
+  generateFAQSchema,
+  generateBreadcrumbSchema,
+} from "@/lib/seo-utils";
 
-// 1. Generate Static Params for all 20 locations
+// Generate static params for all locations
 export function generateStaticParams() {
   return locations.map((location) => ({
     city: location.slug,
   }));
 }
 
-// 2. Dynamically Generate SEO Metadata based on Industry Zone
+// Generate metadata for each location page
 export async function generateMetadata({
   params,
 }: {
   params: Promise<{ city: string }>;
 }): Promise<Metadata> {
   const { city } = await params;
-  const location = locations.find((loc) => loc.slug === city);
-  if (!location) return { title: "Location Not Found" };
+  const location = getLocationBySlug(city);
 
-  const copy = getZoneCopy(location.zone);
+  if (!location) {
+    return {
+      title: "Location Not Found",
+    };
+  }
 
   return {
-    title: `Website Design & App Development Studio in ${location.cityName}`,
-    description: copy.description,
+    title: location.title,
+    description: location.metaDescription,
     alternates: {
       canonical: `https://tnwebz.com/locations/${location.slug}`,
     },
     openGraph: {
-      title: `Expert Web Development in ${location.cityName}`,
-      description: copy.description,
+      title: `${location.title} | TNWebz`,
+      description: location.metaDescription,
       url: `https://tnwebz.com/locations/${location.slug}`,
-      siteName: "TNWebz Digital Studio",
+      siteName: "TNWebz",
       locale: "en_IN",
       type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: `${location.title} | TNWebz`,
+      description: location.metaDescription,
     },
   };
 }
 
-// 3. Render the Page Component
 export default async function LocationPage({
   params,
 }: {
   params: Promise<{ city: string }>;
 }) {
   const { city } = await params;
-  const location = locations.find((loc) => loc.slug === city);
+  const location = getLocationBySlug(city);
 
   if (!location) {
     notFound();
   }
 
-  const copy = getZoneCopy(location.zone);
+  // Structured data
+  const localServiceSchema = generateLocalServiceSchema({
+    cityName: location.cityName,
+    slug: location.slug,
+    description: location.metaDescription,
+  });
 
-  return <TargetedLandingPage cityName={location.cityName} copy={copy} />;
+  const faqSchema =
+    location.faqs.length > 0 ? generateFAQSchema(location.faqs) : null;
+
+  const breadcrumbSchema = generateBreadcrumbSchema([
+    {
+      name: "Home",
+      url: "https://tnwebz.com",
+    },
+    {
+      name: location.cityName,
+      url: `https://tnwebz.com/locations/${location.slug}`,
+    },
+  ]);
+
+  const schemas: any[] = [localServiceSchema, breadcrumbSchema];
+
+  if (faqSchema) {
+    schemas.push(faqSchema);
+  }
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify(schemas),
+        }}
+      />
+
+      <LocationPageContent data={location} />
+    </>
+  );
 }

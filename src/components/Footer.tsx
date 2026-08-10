@@ -1,11 +1,12 @@
 import Link from 'next/link';
 import { locations } from '@/lib/location-data';
+import { services } from '@/lib/services-data';
 
 export default function Footer() {
   return (
     <footer className="bg-zinc-950 text-white py-16 px-4 border-t border-zinc-900">
       <div className="max-w-6xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-8 mb-12 animate-in fade-in duration-700">
           {/* Brand & Info */}
           <div className="md:col-span-1">
             <div className="flex items-center gap-2 mb-4">
@@ -25,6 +26,25 @@ export default function Footer() {
             </div>
           </div>
 
+          {/* Services Links */}
+          <div>
+            <h4 className="text-white font-semibold mb-4 text-sm uppercase tracking-wider">
+              Services
+            </h4>
+            <ul className="space-y-3 text-zinc-400 text-sm">
+              {services.map((svc) => (
+                <li key={svc.slug}>
+                  <Link 
+                    href={`/services/${svc.slug}`} 
+                    className="hover:text-white transition-colors"
+                  >
+                    {svc.shortName}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
           {/* Company Links */}
           <div>
             <h4 className="text-white font-semibold mb-4 text-sm uppercase tracking-wider">
@@ -32,27 +52,27 @@ export default function Footer() {
             </h4>
             <ul className="space-y-3 text-zinc-400 text-sm">
               <li>
-                <Link href="#about" className="hover:text-white transition-colors">
+                <Link href="/#about" className="hover:text-white transition-colors">
                   About
                 </Link>
               </li>
               <li>
-                <Link href="#portfolio" className="hover:text-white transition-colors">
+                <Link href="/#portfolio" className="hover:text-white transition-colors">
                   Portfolio
                 </Link>
               </li>
               <li>
-                <Link href="#services" className="hover:text-white transition-colors">
-                  Services
+                <Link href="/services" className="hover:text-white transition-colors">
+                  All Services
                 </Link>
               </li>
               <li>
-                <Link href="#contact" className="hover:text-white transition-colors">
+                <Link href="/#contact" className="hover:text-white transition-colors">
                   Contact
                 </Link>
               </li>
               <li>
-                <Link href="#refer-and-earn" className="hover:text-red-400 font-medium transition-colors">
+                <Link href="/#refer-and-earn" className="hover:text-red-400 font-medium transition-colors">
                   Refer & Earn (10%)
                 </Link>
               </li>

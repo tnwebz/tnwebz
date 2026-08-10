@@ -17,24 +17,54 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "TNWebz — Premium Web & App Development Studio",
+  metadataBase: new URL("https://tnwebz.com"),
+  title: {
+    default: "Website & App Development Company in Chennai | TNWebz",
+    template: "%s | TNWebz",
+  },
   description:
-    "TNWebz is a premium web development studio specializing in custom websites, mobile apps, and high-converting local SEO solutions.",
+    "TNWebz is a website and app development studio in Chennai, Tamil Nadu. We build custom websites, business websites, e-commerce stores, web applications, and mobile apps for businesses across Chennai, Tambaram, Guindy, Kanchipuram, and surrounding areas.",
   keywords: [
-    "web development",
-    "app development",
-    "freelancing",
-    "website design",
-    "mobile app",
-    "SEO",
+    "website development Chennai",
+    "web developer Chennai",
+    "app development Chennai",
+    "website designer Chennai",
+    "business website development",
+    "e-commerce development",
+    "mobile app development",
     "TNWebz",
   ],
   authors: [{ name: "TNWebz" }],
+  creator: "TNWebz",
+  publisher: "TNWebz",
+  alternates: {
+    canonical: "https://tnwebz.com",
+  },
   openGraph: {
-    title: "TNWebz — Premium Web & App Development Studio",
+    title: "Website & App Development Company in Chennai | TNWebz",
     description:
-      "Transform your ideas into stunning digital experiences with TNWebz.",
+      "TNWebz builds custom websites, mobile apps, and web applications for businesses in Chennai and surrounding areas. Transform your ideas into stunning digital experiences.",
+    url: "https://tnwebz.com",
+    siteName: "TNWebz",
+    locale: "en_IN",
     type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Website & App Development Company in Chennai | TNWebz",
+    description:
+      "TNWebz builds custom websites, mobile apps, and web applications for businesses in Chennai and surrounding areas.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
 };
 
@@ -45,7 +75,7 @@ export default function RootLayout({
 }>) {
   return (
     <html
-      lang="en"
+      lang="en-IN"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">

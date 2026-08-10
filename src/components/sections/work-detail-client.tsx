@@ -181,13 +181,38 @@ export function WorkDetailClient({ client }: { client: ClientProject }) {
   return (
     <main className="min-h-screen bg-slate-50 selection:bg-zinc-200">
       <div className="container mx-auto px-4 pt-28 pb-8 md:pt-36 md:pb-16 max-w-7xl">
-        {/* Navigation */}
+        {/* Navigation & Breadcrumb */}
         <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
           className="mb-12 md:mb-20"
         >
+          <nav aria-label="Breadcrumb" className="text-sm text-zinc-500 mb-6">
+            <ol className="flex items-center gap-2 flex-wrap">
+              <li>
+                <Link href="/" className="hover:text-zinc-900 transition-colors">
+                  Home
+                </Link>
+              </li>
+              <li aria-hidden="true" className="text-zinc-300">
+                /
+              </li>
+              <li>
+                <Link
+                  href="/#portfolio"
+                  className="hover:text-zinc-900 transition-colors"
+                >
+                  Portfolio
+                </Link>
+              </li>
+              <li aria-hidden="true" className="text-zinc-300">
+                /
+              </li>
+              <li className="text-zinc-900 font-medium">{client.websiteName}</li>
+            </ol>
+          </nav>
+
           <Link
             href="/"
             className="inline-flex items-center gap-2 text-sm font-medium text-zinc-500 hover:text-zinc-900 transition-colors group"
@@ -276,6 +301,79 @@ export function WorkDetailClient({ client }: { client: ClientProject }) {
                 onDragOver={(e) => e.preventDefault()}
               />
             ))}
+          </div>
+        </motion.div>
+
+        {/* Related Services & Local Regions */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
+          className="mt-20 pt-16 border-t border-zinc-200/60"
+        >
+          <div className="grid md:grid-cols-2 gap-12">
+            <div>
+              <h3 className="text-xl font-medium text-zinc-900 mb-6">
+                Our Development Services
+              </h3>
+              <p className="text-zinc-600 text-sm mb-6 leading-relaxed">
+                Need a similar website or customized app for your business? We offer end-to-end design, development, and optimization services.
+              </p>
+              <div className="flex flex-wrap gap-2">
+                <Link
+                  href="/services/website-development"
+                  className="px-4 py-2 bg-white border border-zinc-200 text-zinc-600 rounded-full text-xs hover:border-zinc-400 hover:text-zinc-900 transition-all font-medium"
+                >
+                  Website Development
+                </Link>
+                <Link
+                  href="/services/ecommerce-development"
+                  className="px-4 py-2 bg-white border border-zinc-200 text-zinc-600 rounded-full text-xs hover:border-zinc-400 hover:text-zinc-900 transition-all font-medium"
+                >
+                  E-commerce Solutions
+                </Link>
+                <Link
+                  href="/services/mobile-app-development"
+                  className="px-4 py-2 bg-white border border-zinc-200 text-zinc-600 rounded-full text-xs hover:border-zinc-400 hover:text-zinc-900 transition-all font-medium"
+                >
+                  Mobile App Development
+                </Link>
+              </div>
+            </div>
+            <div>
+              <h3 className="text-xl font-medium text-zinc-900 mb-6">
+                Areas We Serve
+              </h3>
+              <p className="text-zinc-600 text-sm mb-6 leading-relaxed">
+                We design and build websites for local businesses across Chennai, Tambaram, Guindy, and surrounding areas.
+              </p>
+              <div className="flex flex-wrap gap-2">
+                <Link
+                  href="/locations/chennai"
+                  className="px-4 py-2 bg-white border border-zinc-200 text-zinc-600 rounded-full text-xs hover:border-zinc-400 hover:text-zinc-900 transition-all font-medium"
+                >
+                  Chennai
+                </Link>
+                <Link
+                  href="/locations/tambaram"
+                  className="px-4 py-2 bg-white border border-zinc-200 text-zinc-600 rounded-full text-xs hover:border-zinc-400 hover:text-zinc-900 transition-all font-medium"
+                >
+                  Tambaram
+                </Link>
+                <Link
+                  href="/locations/guindy"
+                  className="px-4 py-2 bg-white border border-zinc-200 text-zinc-600 rounded-full text-xs hover:border-zinc-400 hover:text-zinc-900 transition-all font-medium"
+                >
+                  Guindy
+                </Link>
+                <Link
+                  href="/locations"
+                  className="px-4 py-2 bg-white border border-zinc-200 text-zinc-600 rounded-full text-xs hover:border-zinc-400 hover:text-zinc-900 transition-all font-medium"
+                >
+                  More Areas →
+                </Link>
+              </div>
+            </div>
           </div>
         </motion.div>
       </div>

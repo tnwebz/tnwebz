@@ -7,11 +7,11 @@ import { Menu, X, Shield, ShieldCheck } from "lucide-react";
 import { useAdmin } from "@/lib/AdminContext";
 
 const NAV_LINKS = [
-  { href: "#about", label: "About" },
-  { href: "#pricing", label: "Pricing" },
-  { href: "#portfolio", label: "Portfolio" },
-  { href: "#contact", label: "Contact" },
-  { href: "#refer-and-earn", label: "Refer & Earn" },
+  { href: "/#about", label: "About" },
+  { href: "/#pricing", label: "Pricing" },
+  { href: "/#portfolio", label: "Portfolio" },
+  { href: "/#contact", label: "Contact" },
+  { href: "/#refer-and-earn", label: "Refer & Earn" },
 ];
 
 export function Navbar() {
