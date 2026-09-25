@@ -114,12 +114,18 @@ export function Footer() {
           <p className="text-zinc-500 text-sm">
             © {new Date().getFullYear()} TNWebz. All rights reserved.
           </p>
-          <div className="flex gap-6 text-zinc-500 text-sm">
-            <Link href="#" className="hover:text-white transition-colors">
+          <div className="flex flex-wrap justify-center md:justify-end gap-x-6 gap-y-2 text-zinc-500 text-sm">
+            <Link href="/terms" className="hover:text-white transition-colors">
+              Terms of Service
+            </Link>
+            <Link href="/privacy-policy" className="hover:text-white transition-colors">
               Privacy Policy
             </Link>
-            <Link href="#" className="hover:text-white transition-colors">
-              Terms of Service
+            <Link href="/refund-policy" className="hover:text-white transition-colors">
+              Refund &amp; Cancellation Policy
+            </Link>
+            <Link href="/payment-terms" className="hover:text-white transition-colors">
+              Payment Terms
             </Link>
           </div>
         </div>
